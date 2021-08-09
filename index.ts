@@ -30,8 +30,8 @@ app.set('trust proxy', 1);
 let http = require("http").Server(app)
 
 app.set("socketService", new Socket(http))
-var appLogStream = fs.createWriteStream(path.join(__dirname, 'backend/log/app.log'), { flags: 'a' })
-app.use(morgan('combined', { stream: appLogStream, skip: (req, res) => { return res.statusCode < 400 } }))
+// var appLogStream = fs.createWriteStream(path.join(__dirname, 'backend/log/app.log'), { flags: 'a' })
+// app.use(morgan('combined', { stream: appLogStream, skip: (req, res) => { return res.statusCode < 400 } }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
