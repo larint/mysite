@@ -1,6 +1,6 @@
 import { verbose } from 'sqlite3'
 var sqlite3 = verbose()
-var db = new sqlite3.Database('db.sqlite')
+// var db = new sqlite3.Database('db.sqlite')
 
 // db.serialize(function () {
 //     db.run("CREATE TABLE lorem (info TEXT)");

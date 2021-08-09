@@ -3,7 +3,7 @@ require('dotenv').config()
 import express from 'express'
 import { Request, Response, NextFunction, ErrorRequestHandler } from 'express'
 import cookieParser from 'cookie-parser'
-import session from 'express-session'
+import session from 'cookie-session'
 import morgan from 'morgan'
 import fs from 'fs'
 import path from 'path'
@@ -25,7 +25,7 @@ declare module 'express-session' {
 }
 
 const app = express()
-
+app.set('trust proxy', 1);
 // Real-time notification updates
 let http = require("http").Server(app)
 
@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(methodOverride('_method'))
 // session expire time after 7 days (milliseconds)
-app.use(session({ secret: "bjhbahsbdjabwdhjbwjdh", resave: true, saveUninitialized: true, cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } }))
+app.use(session({ secret: "bjhbahsbdjabwdhjbwjdh", maxAge: 7 * 24 * 60 * 60 * 1000 }))
 app.use(express.static(path.join(__dirname)))
 
 // pass user to all template
