@@ -66,7 +66,7 @@ app.all('*', function (req, res) {
 	return res.json({ error: '404' })
 });
 
-http.listen(process.env.PORT || 3000, () => {
+http.listen(process.env.PORT || 5050, () => {
 	console.log('listening @ 3000', new Date())
 })
 http.timeout = 900000 //15 minute

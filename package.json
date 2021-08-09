@@ -2,7 +2,9 @@
   "name": "mysite",
   "version": "0.0.0",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "start": "node index.js"
+  },
   "engines": {
     "node": "12.x",
     "npm": "6.x"
