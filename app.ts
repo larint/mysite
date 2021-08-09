@@ -8,8 +8,8 @@ import morgan from 'morgan'
 import fs from 'fs'
 import path from 'path'
 import methodOverride from 'method-override'
-import { middlewareNoAuth } from './backend/middleware/auth'
-import { middlewareGlobal } from './backend/middleware/common'
+// import { middlewareNoAuth } from './backend/middleware/auth'
+// import { middlewareGlobal } from './backend/middleware/common'
 import { Socket } from './backend/services/socket'
 
 // ROUTER
@@ -41,7 +41,7 @@ app.use(session({ secret: "bjhbahsbdjabwdhjbwjdh", resave: true, saveUninitializ
 app.use(express.static(path.join(__dirname)))
 
 // pass user to all template
-app.use(middlewareGlobal)
+// app.use(middlewareGlobal)
 
 // catch 404 and forward to error handler
 app.use(/\/(app.js|package.json)/, (req: Request, res: Response, next: NextFunction) => {

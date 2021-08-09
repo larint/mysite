@@ -11,7 +11,6 @@ const morgan_1 = __importDefault(require("morgan"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const method_override_1 = __importDefault(require("method-override"));
-const common_1 = require("./backend/middleware/common");
 const socket_1 = require("./backend/services/socket");
 const routes_1 = require("./backend/routes");
 require("./backend/services/db");
@@ -26,7 +25,6 @@ app.use(cookie_parser_1.default());
 app.use(method_override_1.default('_method'));
 app.use(express_session_1.default({ secret: "bjhbahsbdjabwdhjbwjdh", resave: true, saveUninitialized: true, cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } }));
 app.use(express_1.default.static(path_1.default.join(__dirname)));
-app.use(common_1.middlewareGlobal);
 app.use(/\/(app.js|package.json)/, (req, res, next) => {
     res.sendStatus(404);
 });
