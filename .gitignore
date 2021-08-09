@@ -1,0 +1,14 @@
+node_modules
+zbuild
+launch.json
+.vscode
+*.log
+.env-heroku
+*.sql
+.env
+*.txt
+*.pdf
+*.rar
+*.zip
+uploads
+storage
