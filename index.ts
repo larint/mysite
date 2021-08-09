@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(methodOverride('_method'))
 // session expire time after 7 days (milliseconds)
-app.use(session({ secret: "bjhbahsbdjabwdhjbwjdh", maxAge: 7 * 24 * 60 * 60 * 1000 }))
+app.use(session({ secret: "bbjfhsbdfjhbdfjh", maxAge: 7 * 24 * 60 * 60 * 1000 }))
 app.use(express.static(path.join(__dirname)))
 
 // pass user to all template

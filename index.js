@@ -24,7 +24,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(cookie_parser_1.default());
 app.use(method_override_1.default('_method'));
-app.use(cookie_session_1.default({ secret: "bjhbahsbdjabwdhjbwjdh", maxAge: 7 * 24 * 60 * 60 * 1000 }));
+app.use(cookie_session_1.default({ secret: "bbjfhsbdfjhbdfjh", maxAge: 7 * 24 * 60 * 60 * 1000 }));
 app.use(express_1.default.static(path_1.default.join(__dirname)));
 app.use(/\/(app.js|package.json)/, (req, res, next) => {
     res.sendStatus(404);
