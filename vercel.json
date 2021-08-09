@@ -1,5 +1,11 @@
 {
     "version": 2,
+    "rewrites": [
+        {
+             "source": "/(.*)", 
+             "dest": "/" 
+        }
+    ],
     "builds":[
         {
             "src": "./index.js",
