@@ -3,7 +3,7 @@
     "rewrites": [
         {
              "source": "/(.*)", 
-             "dest": "/" 
+             "destination": "/" 
         }
     ],
     "builds":[
