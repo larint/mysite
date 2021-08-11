@@ -46,7 +46,7 @@ app.use(/\/(app.js|package.json)/, (req: Request, res: Response, next: NextFunct
 	res.sendStatus(404)
 })
 
-// use build folder of react to use as client
+// use for get static resources react
 app.use(express.static(path.join(__dirname, 'frontend', 'build')))
 // router
 app.use('/api', apiRoute)
