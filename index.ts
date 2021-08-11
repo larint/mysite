@@ -13,7 +13,7 @@ import methodOverride from 'method-override'
 import { Socket } from './backend/services/socket'
 
 // ROUTER
-import { router } from './backend/routes'
+import { apiRoute } from './backend/routes'
 
 import './backend/services/db'
 
@@ -25,7 +25,6 @@ declare module 'express-session' {
 }
 
 const app = express()
-app.set('trust proxy', 1);
 // Real-time notification updates
 let http = require("http").Server(app)
 
@@ -38,7 +37,6 @@ app.use(cookieParser())
 app.use(methodOverride('_method'))
 // session expire time after 7 days (milliseconds)
 app.use(session({ secret: "bbjfhsbdfjhbdfjh", maxAge: 7 * 24 * 60 * 60 * 1000 }))
-app.use(express.static(path.join(__dirname)))
 
 // pass user to all template
 // app.use(middlewareGlobal)
@@ -48,8 +46,13 @@ app.use(/\/(app.js|package.json)/, (req: Request, res: Response, next: NextFunct
 	res.sendStatus(404)
 })
 
-// app.use('/statistic', middlewareNoAuth, statisticRouter)
-app.use('/api', router)
+// use build folder of react to use as client
+app.use(express.static(path.join(__dirname, 'frontend', 'build')))
+// router
+app.use('/api', apiRoute)
+app.all('/*', (req, res) => {
+	return res.json({ error: 'invalid api request' })
+});
 
 // error handler
 app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) => {
@@ -60,11 +63,7 @@ app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFuncti
 	// render the error page
 	// res.status(err.status || 500);
 	return res.json({ error: 'error' })
-});
-
-app.all('*', function (req, res) {
-	return res.json({ error: '404' })
-});
+})
 
 http.listen(process.env.PORT || 5050, () => {
 	console.log('listening @ 3000', new Date())

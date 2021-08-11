@@ -13,7 +13,6 @@ const socket_1 = require("./backend/services/socket");
 const routes_1 = require("./backend/routes");
 require("./backend/services/db");
 const app = express_1.default();
-app.set('trust proxy', 1);
 let http = require("http").Server(app);
 app.set("socketService", new socket_1.Socket(http));
 app.use(express_1.default.json());
@@ -21,17 +20,17 @@ app.use(express_1.default.urlencoded({ extended: false }));
 app.use(cookie_parser_1.default());
 app.use(method_override_1.default('_method'));
 app.use(cookie_session_1.default({ secret: "bbjfhsbdfjhbdfjh", maxAge: 7 * 24 * 60 * 60 * 1000 }));
-app.use(express_1.default.static(path_1.default.join(__dirname)));
 app.use(/\/(app.js|package.json)/, (req, res, next) => {
     res.sendStatus(404);
 });
-app.use('/api', routes_1.router);
+app.use(express_1.default.static(path_1.default.join(__dirname, 'frontend', 'build')));
+app.use('/api', routes_1.apiRoute);
+app.all('/*', (req, res) => {
+    return res.json({ error: 'invalid api request' });
+});
 app.use((err, req, res, next) => {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
     return res.json({ error: 'error' });
-});
-app.all('*', function (req, res) {
-    return res.json({ error: '404' });
 });
 http.listen(process.env.PORT || 5050, () => {
     console.log('listening @ 3000', new Date());

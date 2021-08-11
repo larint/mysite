@@ -1,8 +1,8 @@
 import { Router } from "express";
 import homeRouter from './home'
 
-let router = Router()
+let apiRoute = Router()
 
-router.use('/', homeRouter)
+apiRoute.use('/', homeRouter)
 
-export { router }
+export { apiRoute }
