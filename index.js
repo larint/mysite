@@ -31,7 +31,7 @@ app.all('/api/*', (req, res) => {
 app.get('/', (req, res) => {
     res.sendFile(path_1.default.join(__dirname, 'frontend', 'build', 'index.html'), function (err) {
         if (err) {
-            res.status(500).send(err);
+            res.send(err);
         }
     });
 });
