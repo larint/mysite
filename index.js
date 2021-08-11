@@ -25,8 +25,15 @@ app.use(/\/(app.js|package.json)/, (req, res, next) => {
 });
 app.use(express_1.default.static(path_1.default.join(__dirname, 'frontend', 'build')));
 app.use('/api', routes_1.apiRoute);
-app.all('/*', (req, res) => {
+app.all('/api/*', (req, res) => {
     return res.json({ error: 'invalid api request' });
+});
+app.get('/', (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, 'frontend', 'build', 'index.html'), function (err) {
+        if (err) {
+            res.status(500).send(err);
+        }
+    });
 });
 app.use((err, req, res, next) => {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
