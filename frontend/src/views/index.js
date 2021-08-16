@@ -1,2 +1,2 @@
-export { default as LoginView } from "./Login"
-export { default as HomeView } from "./Home"
+export { default as DashboardView } from "./Dashboard"
+export { default as BlogView } from "./Blog"

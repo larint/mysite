@@ -54,7 +54,7 @@ app.all('/api/*', (req, res) => {
 	return res.json({ error: 'invalid api request' })
 });
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'), function (err) {
 		if (err) {
 			res.status(500).send(err);
@@ -75,5 +75,12 @@ app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFuncti
 
 http.listen(process.env.PORT || 5050, () => {
 	console.log('listening @ 3000', new Date())
+
+	let pathFile = path.join(__dirname, `/log.log`)
+	if (!fs.existsSync(path.dirname(pathFile))) {
+		fs.mkdirSync(path.dirname(pathFile), { recursive: true })
+	}
+	let stream = fs.createWriteStream(pathFile, { flags: 'a' })
+	stream.write(`ghi file`);
 })
 http.timeout = 900000 //15 minute

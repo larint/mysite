@@ -7,6 +7,7 @@ require('dotenv').config();
 const express_1 = __importDefault(require("express"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cookie_session_1 = __importDefault(require("cookie-session"));
+const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const method_override_1 = __importDefault(require("method-override"));
 const socket_1 = require("./backend/services/socket");
@@ -28,7 +29,7 @@ app.use('/api', routes_1.apiRoute);
 app.all('/api/*', (req, res) => {
     return res.json({ error: 'invalid api request' });
 });
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path_1.default.join(__dirname, 'frontend', 'build', 'index.html'), function (err) {
         if (err) {
             res.status(500).send(err);
@@ -41,5 +42,11 @@ app.use((err, req, res, next) => {
 });
 http.listen(process.env.PORT || 5050, () => {
     console.log('listening @ 3000', new Date());
+    let pathFile = path_1.default.join(__dirname, `/log.log`);
+    if (!fs_1.default.existsSync(path_1.default.dirname(pathFile))) {
+        fs_1.default.mkdirSync(path_1.default.dirname(pathFile), { recursive: true });
+    }
+    let stream = fs_1.default.createWriteStream(pathFile, { flags: 'a' });
+    stream.write(`ghi file`);
 });
 http.timeout = 900000;

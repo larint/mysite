@@ -3,8 +3,8 @@ import { Switch, Redirect } from "react-router-dom"
 import RouteWithLayout from './components/RouteWithLayout'
 import { MainLayout } from './layouts'
 import {
-    LoginView,
-    HomeView
+    DashboardView,
+    BlogView
 } from './views'
 
 const RouterApp = () => {
@@ -13,13 +13,19 @@ const RouterApp = () => {
             <RouteWithLayout
                 exact
                 layout={MainLayout}
-                component={LoginView}
-                path='/login'
+                component={DashboardView}
+                path='/admin/dashboard'
             />
             <RouteWithLayout
                 exact
                 layout={MainLayout}
-                component={HomeView}
+                component={BlogView}
+                path='/admin/blog'
+            />
+            <RouteWithLayout
+                exact
+                layout={MainLayout}
+                component={DashboardView}
                 path='/'
             />
         </Switch>
