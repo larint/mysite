@@ -29,8 +29,8 @@ const app = express()
 let http = require("http").Server(app)
 
 app.set("socketService", new Socket(http))
-// var appLogStream = fs.createWriteStream(path.join(__dirname, 'backend/log/app.log'), { flags: 'a' })
-// app.use(morgan('combined', { stream: appLogStream, skip: (req, res) => { return res.statusCode < 400 } }))
+var appLogStream = fs.createWriteStream(path.join(__dirname, 'backend/log/app.log'), { flags: 'a' })
+app.use(morgan('combined', { stream: appLogStream, skip: (req, res) => { return res.statusCode < 400 } }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
@@ -75,12 +75,5 @@ app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFuncti
 
 http.listen(process.env.PORT || 5050, () => {
 	console.log('listening @ 3000', new Date())
-
-	let pathFile = path.join(__dirname, `/log.log`)
-	if (!fs.existsSync(path.dirname(pathFile))) {
-		fs.mkdirSync(path.dirname(pathFile), { recursive: true })
-	}
-	let stream = fs.createWriteStream(pathFile, { flags: 'a' })
-	stream.write(`ghi file`);
 })
 http.timeout = 900000 //15 minute

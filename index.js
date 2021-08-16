@@ -7,6 +7,7 @@ require('dotenv').config();
 const express_1 = __importDefault(require("express"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cookie_session_1 = __importDefault(require("cookie-session"));
+const morgan_1 = __importDefault(require("morgan"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const method_override_1 = __importDefault(require("method-override"));
@@ -16,6 +17,8 @@ require("./backend/services/db");
 const app = express_1.default();
 let http = require("http").Server(app);
 app.set("socketService", new socket_1.Socket(http));
+var appLogStream = fs_1.default.createWriteStream(path_1.default.join(__dirname, 'backend/log/app.log'), { flags: 'a' });
+app.use(morgan_1.default('combined', { stream: appLogStream, skip: (req, res) => { return res.statusCode < 400; } }));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(cookie_parser_1.default());
@@ -42,11 +45,5 @@ app.use((err, req, res, next) => {
 });
 http.listen(process.env.PORT || 5050, () => {
     console.log('listening @ 3000', new Date());
-    let pathFile = path_1.default.join(__dirname, `/log.log`);
-    if (!fs_1.default.existsSync(path_1.default.dirname(pathFile))) {
-        fs_1.default.mkdirSync(path_1.default.dirname(pathFile), { recursive: true });
-    }
-    let stream = fs_1.default.createWriteStream(pathFile, { flags: 'a' });
-    stream.write(`ghi file`);
 });
 http.timeout = 900000;

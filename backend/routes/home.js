@@ -7,4 +7,5 @@ const express_1 = require("express");
 const home_controller_1 = __importDefault(require("../controllers/home_controller"));
 let router = express_1.Router();
 router.get('/', home_controller_1.default.index);
+router.get('/log', home_controller_1.default.log);
 exports.default = router;
