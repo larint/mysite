@@ -1,8 +1,8 @@
 import axios from "axios"
 
 /* BASE URL */
-export const SITE_URL = "https://mysite-larint.vercel.app" //LOCAL
-// export const SITE_URL = "http://localhost:3001" //LOCAL
+// export const SITE_URL = "https://mysite-larint.vercel.app" //LOCAL
+export const SITE_URL = "http://localhost:3001" //LOCAL
 
 export const BASE_URL = SITE_URL + "/api"
 export const UPLOADS_URL = SITE_URL + "/uploads/"
