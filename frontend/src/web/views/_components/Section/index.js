@@ -1,0 +1,6 @@
+export { default as Blog } from './Blog'
+export { default as Contact } from './Contact'
+export { default as Hello } from './Hello'
+export { default as Portfolio } from './Portfolio'
+export { default as Resume } from './Resume'
+export { default as Testimonials } from './Testimonials'
