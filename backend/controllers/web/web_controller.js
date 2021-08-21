@@ -1,20 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const db_1 = require("../../utility/db");
 class WebController {
     constructor() {
         this.getProfile = async (req, res) => {
-            return res.json({
-                "id": 1,
-                "name": "Quang Dung",
-                "birthDay": "1991",
-                "phone": "0394-06-89-60",
-                "email": "qdspkit@gmail.com",
-                "work": "web developer",
-                "address": "Linh Tay Ward, Thu Duc City, Ho Chi Minh City",
-                "socialLink1": null,
-                "socialLink2": null,
-                "socialLink3": null
-            });
+            var _a;
+            let users = await db_1.DB.select('users');
+            return res.json((_a = users.data[0]) === null || _a === void 0 ? void 0 : _a.data);
         };
     }
 }
