@@ -1,4 +1,5 @@
 import { withRouter } from "react-router-dom"
+import { HashLink } from 'react-router-hash-link'
 
 const MobileMenu = (props) => {
     return (
@@ -9,12 +10,21 @@ const MobileMenu = (props) => {
                 </div>
                 <nav className="mobile-menu__wrapper">
                     <ul>
-                        <li><a href="#hello">Hello</a></li>
-                        <li><a href="#resume">Resume</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#testimonials">testimonials</a></li>
-                        <li><a href="#blog">blog</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li>
+                            <HashLink smooth to="#hello">Hello</HashLink>
+                        </li>
+                        <li>
+                            <HashLink smooth to="#resume">Resume</HashLink>
+                        </li>
+                        <li>
+                            <HashLink smooth to="#portfolio">Portfolio</HashLink>
+                        </li>
+                        <li>
+                            <HashLink smooth to="#blog">blog</HashLink>
+                        </li>
+                        <li>
+                            <HashLink smooth to="#contact">Contact</HashLink>
+                        </li>
                     </ul>
                 </nav>
             </div>

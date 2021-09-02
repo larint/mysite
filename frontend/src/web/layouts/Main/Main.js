@@ -1,25 +1,9 @@
-import React from "react"
-import { withRouter } from "react-router"
-import { useScript } from "../../components"
+import React, { useState } from "react"
+import { withRouter } from "react-router-dom"
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 
 const Main = (props) => {
     const { children } = props
-
-    useScript(
-        'assets/js/popper.min.js',
-        'assets/js/bootstrap.min.js',
-        'assets/js/menu.js',
-        'assets/js/jquery.waypoints.js',
-        'assets/js/progress-list.js',
-        'assets/js/section.js',
-        'assets/js/portfolio-filter.js',
-        'assets/js/slider-carousel.js',
-        'assets/js/mobile-menu.js',
-        'assets/js/contacts.js',
-        'assets/js/mbclicker.min.js',
-        'assets/js/site-btn.js'
-    )
 
     return (
         <HelmetProvider>

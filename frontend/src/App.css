@@ -15,3 +15,7 @@
 .ant-layout-header .header-title {
     font-size: 24px;
 }
+
+.lower {
+    text-transform: lowercase !important;
+}

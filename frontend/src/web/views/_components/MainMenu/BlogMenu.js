@@ -1,7 +1,8 @@
-import { withRouter } from "react-router-dom"
+import { withRouter, Link } from "react-router-dom"
 import { HashLink } from 'react-router-hash-link'
 
-const MainMenu = (props) => {
+const BlogMenu = (props) => {
+    const { location } = props
 
     return (
         <div className="menu">
@@ -11,27 +12,21 @@ const MainMenu = (props) => {
                         <nav className="">
                             <ul>
                                 <li>
-                                    <HashLink smooth to="#hello">Hello</HashLink>
+                                    <Link to={{ pathname: "/" }}>Home</Link>
                                 </li>
                                 <li>
-                                    <HashLink smooth to="#resume">Resume</HashLink>
+                                    <HashLink smooth to={location.pathname + "#posts"}>other posts</HashLink>
                                 </li>
                                 <li>
-                                    <HashLink smooth to="#portfolio">Portfolio</HashLink>
-                                </li>
-                                <li>
-                                    <HashLink smooth to="#blog">blog</HashLink>
-                                </li>
-                                <li>
-                                    <HashLink smooth to="#contact">Contact</HashLink>
+                                    <HashLink smooth to={location.pathname + "#contact"}>Contact</HashLink>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                     <div className="menu__wrapper col-md-12 d-lg-none">
-                        <button type="button" className="menu__mobile-button">
+                        <div className="menu__mobile-button">
                             <span><i className="fa fa-bars" aria-hidden="true"></i></span>
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,4 +34,4 @@ const MainMenu = (props) => {
     )
 }
 
-export default withRouter(MainMenu)
+export default withRouter(BlogMenu)

@@ -3,17 +3,14 @@ import React, { useState } from "react"
 import { useQuery } from "react-query"
 import * as API from "../../common/api"
 import {
-    MainMenu,
-    MobileMenu,
-    Header,
-    Hello,
-    Resume,
-    Portfolio,
-    Blog,
-    Contact
-} from '../_components'
+    BlogDetail,
+    Contact,
+    OtherPost,
+    BlogMenu,
+    BlogMobileMenu
+} from "../_components"
 
-const Home = (props) => {
+const Blog = (props) => {
     const [profile, setProfile] = useState({})
 
     useQuery(
@@ -37,17 +34,14 @@ const Home = (props) => {
 
     return (
         <div>
-            <MainMenu />
-            <MobileMenu />
-            <Header profile={profile} />
-            <Hello profile={profile} />
-            <hr />
-            <Resume />
-            <Portfolio />
-            <Blog />
+            <BlogMenu />
+            <BlogMobileMenu />
+            <header className="background blog-header" style={{ backgroundImage: "url(assets/img/img_bg_main.jpg)" }}></header>
+            <BlogDetail />
+            <OtherPost />
             <Contact profile={profile} />
         </div>
     )
 }
 
-export default withRouter(Home)
+export default withRouter(Blog)

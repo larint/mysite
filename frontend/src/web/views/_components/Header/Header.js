@@ -1,30 +1,7 @@
-import { useState } from "react"
 import { withRouter } from "react-router-dom"
-import { useQuery } from "react-query"
-import * as API from "../../../common/api"
-
 
 const Header = (props) => {
-    const [profile, setProfile] = useState({})
-
-    useQuery(
-        [API.QUERY_KEY_GET_PROFILE], () => API.getProfile(),
-        {
-            keepPreviousData: true,
-            onSuccess: (response) => {
-                if (response?.data) {
-                    setProfile(response.data)
-                } else {
-                    setProfile({})
-                }
-            },
-            onError: (error) => {
-                if (error?.response?.status === 401) {
-
-                }
-            }
-        }
-    )
+    const { profile } = props
 
     return (
         <header className="main-header" style={{ backgroundImage: 'url(assets/img/img_bg_header.jpg)' }}>
@@ -49,9 +26,9 @@ const Header = (props) => {
                             </dl>
                         </div>
                         <p className="personal-profile__social">
-                            <a href="" target="_blank"><i className="fa fa-github"></i></a>
-                            <a href="" target="_blank"><i className="fa fa-linkedin-square"></i></a>
-                            <a href="" target="_blank"><i className="fa fa-facebook-square"></i></a>
+                            <a href={profile.socialLink1} target="_blank"><i className="fa fa-github"></i></a>
+                            <a href={profile.socialLink2} target="_blank"><i className="fa fa-linkedin-square"></i></a>
+                            <a href={profile.socialLink3} target="_blank"><i className="fa fa-facebook-square"></i></a>
                         </p>
                     </div>
                 </div>

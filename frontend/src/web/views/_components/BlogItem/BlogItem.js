@@ -1,22 +1,23 @@
-import { withRouter } from "react-router-dom"
+import { withRouter, Link } from "react-router-dom"
+import { strToSlug } from "../../../common/common"
 
 const BlogItem = (props) => {
+    const { post } = props
+
     return (
-        <div class="col-md-4">
-            <a href="blog.html">
-                <div class="post-cards__card">
-                    <div class="post-cards__img">
+        <div className="col-md-4">
+            <Link to={{ pathname: "/blog/" + post.slug }}>
+                <div className="post-cards__card">
+                    <div className="post-cards__img">
                         <img src="assets/img/img_blog_1.png" alt="blog_img" />
                     </div>
-                    <div class="post-cards__info">
-                        <p class="post-cards__date">October 22, 2017</p>
-                        <h3 class="post-cards_title">How to use css-preprocessor</h3>
-                        <p class="post-cards_description">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit, sed do eiusmod tempr incididunt...
-                        </p>
+                    <div className="post-cards__info">
+                        <p className="post-cards__date">{post.createdAt}</p>
+                        <h3 className="post-cards_title">{post.title}</h3>
+                        <p className="post-cards_description">{post.content.substring(1, 100) + '...'}</p>
                     </div>
                 </div>
-            </a>
+            </Link>
         </div>
     )
 }

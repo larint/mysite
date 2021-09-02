@@ -3,7 +3,8 @@ import { Switch, Redirect } from "react-router-dom"
 import { RouteWithLayout } from './web/components'
 import { MainLayout } from './web/layouts'
 import {
-    HomeView
+    HomeView,
+    BlogView
 } from './web/views'
 
 const RouterWeb = () => {
@@ -14,6 +15,12 @@ const RouterWeb = () => {
                 layout={MainLayout}
                 component={HomeView}
                 path='/'
+            />
+            <RouteWithLayout
+                exact
+                layout={MainLayout}
+                component={BlogView}
+                path='/blog/:slug'
             />
         </Switch>
     )

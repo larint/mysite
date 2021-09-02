@@ -1,78 +1,77 @@
 import { withRouter } from "react-router-dom"
+import React, { useState } from "react"
+import { useQuery } from "react-query"
+import * as API from "../../../common/api"
 
 const Resume = (props) => {
+    const [resume, setResume] = useState([])
+
+    useQuery(
+        [API.QUERY_KEY_GET_RESUME], () => API.getResume(),
+        {
+            keepPreviousData: true,
+            onSuccess: (response) => {
+                if (response?.data) {
+                    setResume(response.data)
+                } else {
+                    setResume([])
+                }
+            },
+            onError: (error) => {
+                if (error?.response?.status === 401) {
+
+                }
+            }
+        }
+    )
+
     return (
         <section id="resume" className="container section">
             <div className="row">
                 <div className="col-md-10">
                     <h2 id="resume_header" className="section__title">Resume_</h2>
                     <p className="section__description">
-                        Lorem ipsum dolor sit amet, <i><b>communication</b></i> adipisicing elit, <i><b>helpful</b></i> eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud <i><b>sence of
-                            humour</b></i> ullamco laboris nisi ut <i><b>honest</b></i> ea commodo consequat. Duis aute irure dolor in
-                        upper-intermediate english level velit dolore eu ivivdtevoluptatem ontend developer.
+                        I have been working with web technologies for a long time. <br />
+                        When I first started working on the web, I did freelance work on the internet.
                     </p>
                 </div>
             </div>
             <div className="row">
                 <div className="col-md-8 section__resume resume-list">
                     <h3 className="resume-list_title">education</h3>
-                    <div className="resume-list__block">
-                        <p className="resume-list__block-title">University of Minnesota Twin Cities </p>
-                        <p className="resume-list__block-date">2006 - 2010</p>
-                        <p>
-                            Bachelor Computer Engineering Lorem
-                        </p>
-                    </div>
-                    <div className="resume-list__block">
-                        <p className="resume-list__block-title">School of Informational technologies</p>
-                        <p className="resume-list__block-date">2004 - 2005</p>
-                        <p>
-                            Awesome student, lorem ipsum dolor sit amet, conse ctetur adipisicing elit, sed do eius-
-                            mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                        </p>
-                    </div>
-                    <div className="resume-list__block">
-                        <p className="resume-list__block-title">Lorem Ipsum School</p>
-                        <p className="resume-list__block-date">2003 - 2006</p>
-                        <p>
-                            Student, Lorem ipsum dolor sit amet, consecte tur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut
-                        </p>
-                    </div>
+                    {
+                        resume.length > 0 && resume.map((item, index) => (
+                            index == 0 && (
+                                <div className="resume-list__block" key={index}>
+                                    <p className="resume-list__block-title">{item.mainTitle}</p>
+                                    <p className="resume-list__block-date">{item.time}</p>
+                                    <p>{item.desc}</p>
+                                </div>
+                            )
+                        ))
+                    }
                 </div>
             </div>
             <div className="row">
                 <div className="col-md-8 section__resume resume-list">
                     <h3 className="resume-list_title">employment</h3>
-                    <div className="resume-list__block">
-                        <p className="resume-list__block-title">Apple</p>
-                        <p className="resume-list__block-date">2006 - 2010</p>
-                        <p>
-                            Senior Full Stack Developer
-                        </p>
-                    </div>
-                    <div className="resume-list__block">
-                        <p className="resume-list__block-title">Tech university</p>
-                        <p className="resume-list__block-date">2004 - 2005</p>
-                        <p>
-                            Awesome developer, lorem ipsum dolor sit amet, conse ctetur adipisicing elit, sed do eius-
-                            mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                        </p>
-                    </div>
-                    <div className="resume-list__block">
-                        <p className="resume-list__block-title">Molly’s studio</p>
-                        <p className="resume-list__block-date">2003 - 2006</p>
-                        <p>
-                            Programmer Lorem ipsum dolor sit amet, consecte tur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut
-                        </p>
-                    </div>
+                    {
+                        resume.length > 0 && resume.map((item, index) => (
+                            index > 0 && (
+                                <div className="resume-list__block" key={index}>
+                                    <p className="resume-list__block-title">{item.mainTitle}</p>
+                                    <p className="resume-list__block-date">{item.time}</p>
+                                    <p>{item.desc}</p>
+                                </div>
+                            )
+                        ))
+                    }
                 </div>
             </div>
             <div className="row section__resume progress-list js-progress-list">
                 <div className="col-md-12">
                     <h3 className="progress-list__title">general skills</h3>
+                    <p className="section__description lower">my knowledge level in web technology</p>
                 </div>
                 <div className="col-md-5 mr-auto">
                     <div className="progress-list__skill">

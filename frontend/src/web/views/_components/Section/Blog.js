@@ -1,6 +1,33 @@
+import React, { useState } from "react"
 import { withRouter } from "react-router-dom"
+import { useQuery } from "react-query"
+import * as API from "../../../common/api"
+import {
+    BlogItem
+} from '../../_components'
 
 const Blog = (props) => {
+    const [blog, setBlog] = useState([])
+
+    useQuery(
+        [API.QUERY_KEY_GET_BLOG], () => API.getBlog(),
+        {
+            keepPreviousData: true,
+            onSuccess: (response) => {
+                if (response?.data) {
+                    setBlog(response.data)
+                } else {
+                    setBlog([])
+                }
+            },
+            onError: (error) => {
+                if (error?.response?.status === 401) {
+
+                }
+            }
+        }
+    )
+
     return (
         <section id="blog" className="container section">
             <div className="row">
@@ -10,54 +37,11 @@ const Blog = (props) => {
             </div>
 
             <div className="row post-cards">
-                <div className="col-md-4">
-                    <a href="blog.html">
-                        <div className="post-cards__card">
-                            <div className="post-cards__img">
-                                <img src="assets/img/img_blog_1.png" alt="blog_img" />
-                            </div>
-                            <div className="post-cards__info">
-                                <p className="post-cards__date">October 22, 2017</p>
-                                <h3 className="post-cards_title">How to use css-preprocessor</h3>
-                                <p className="post-cards_description">Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit, sed do eiusmod tempr incididunt...
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div className="col-md-4">
-                    <a href="blog.html">
-                        <div className="post-cards__card">
-                            <div className="post-cards__img">
-                                <img src="assets/img/img_blog_2.png" alt="blog_img" />
-                            </div>
-                            <div className="post-cards__info">
-                                <p className="post-cards__date">October 22, 2017</p>
-                                <h3 className="post-cards_title">How I organize my work with code</h3>
-                                <p className="post-cards_description">Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit, sed do eiusmod tempr incididu...
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div className="col-md-4">
-                    <a href="blog.html">
-                        <div className="post-cards__card">
-                            <div className="post-cards__img">
-                                <img src="assets/img/img_blog_3.png" alt="blog_img" />
-                            </div>
-                            <div className="post-cards__info">
-                                <p className="post-cards__date">October 22, 2017</p>
-                                <h3 className="post-cards_title">SVG sprites vs Icon Font</h3>
-                                <p className="post-cards_description">Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit, sed do eiusmod tempr incididu...
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                {
+                    blog.length > 0 && blog.map((item, index) => (
+                        <BlogItem post={item} />
+                    ))
+                }
             </div>
         </section>
     )

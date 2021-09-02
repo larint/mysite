@@ -1,1 +1,2 @@
-export { default } from './MobileMenu'
+export { default as MobileMenu } from './MobileMenu'
+export { default as BlogMobileMenu } from './BlogMobileMenu'
