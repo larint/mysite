@@ -1,23 +1,21 @@
 import { Request, Response, } from 'express'
 import { DB } from '../../utility/db'
+import { default as profile } from '../../db/profile.json'
+import { default as resume } from '../../db/resume.json'
+import { default as project } from '../../db/project.json'
 
 class WebController {
 
     getProfile = async (req: Request, res: Response) => {
-        let users: any = await DB.select('users')
-        return res.json(users.data[0]?.data)
+        return res.status(200).send(profile)
     }
 
     getResume = async (req: Request, res: Response) => {
-        let resume: any = await DB.select('resume')
-        let data = resume.data.map((el: any) => el.data)
-        return res.status(200).json(data)
+        return res.status(200).json(resume)
     }
 
     getProject = async (req: Request, res: Response) => {
-        let project: any = await DB.select('project')
-        let data = project.data.map((el: any) => el.data)
-        return res.status(200).json(data)
+        return res.status(200).json(project)
     }
 
     getBlog = async (req: Request, res: Response) => {

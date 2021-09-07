@@ -1,0 +1,22 @@
+[
+    {
+        "mainTitle": "HCMC University of Technology and Education",
+        "time": "2009 - 2013",
+        "desc": "Bachelor Computer Engineering"
+    },
+    {
+        "mainTitle": "freelancer",
+        "time": "2013 - 2014",
+        "desc": "Freelance on projects from the community."
+    },
+    {
+        "mainTitle": "Vietnam Australia e-commerce company",
+        "time": "2015 - 2016",
+        "desc": "Development of online game card trading application on Android and iOS platforms. Maintain company website and sales system. Working with online payment tools like vtc pay, onepay, paypal..."
+    },
+    {
+        "mainTitle": "Allgrow-labo Co. Ltd",
+        "time": "2017 - today",
+        "desc": "Maintaining and building functions for Japanese customers' websites, developing a store statistics management system on the LINE platform, building a student health survey system.."
+    }
+]

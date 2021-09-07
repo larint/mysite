@@ -1,22 +1,22 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = require("../../utility/db");
+const profile_json_1 = __importDefault(require("../../db/profile.json"));
+const resume_json_1 = __importDefault(require("../../db/resume.json"));
+const project_json_1 = __importDefault(require("../../db/project.json"));
 class WebController {
     constructor() {
         this.getProfile = async (req, res) => {
-            var _a;
-            let users = await db_1.DB.select('users');
-            return res.json((_a = users.data[0]) === null || _a === void 0 ? void 0 : _a.data);
+            return res.status(200).send(profile_json_1.default);
         };
         this.getResume = async (req, res) => {
-            let resume = await db_1.DB.select('resume');
-            let data = resume.data.map((el) => el.data);
-            return res.status(200).json(data);
+            return res.status(200).json(resume_json_1.default);
         };
         this.getProject = async (req, res) => {
-            let project = await db_1.DB.select('project');
-            let data = project.data.map((el) => el.data);
-            return res.status(200).json(data);
+            return res.status(200).json(project_json_1.default);
         };
         this.getBlog = async (req, res) => {
             let post = await db_1.DB.select('post');

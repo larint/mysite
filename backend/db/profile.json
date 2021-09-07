@@ -1,0 +1,17 @@
+{
+    "name": "Quang Dung",
+    "job" : "web developer",
+    "birthDay" : "1991",
+    "contact" : {
+        "phone" : "0394-06-89-60",
+        "email" : "qdspkit@gmail.com",
+        "address" : "Linh Tay Ward, Thu Duc City, Ho Chi Minh City"
+    },
+    "password" : "",
+    "social" : {
+        "fb" : "",
+        "github" : "",
+        "insta" : ""
+    },
+    "intro": "I'm a Web Backend developer able to build a Web presence from the ground up - from concept, database sketch, project structure.<br />Experienced in optimizing source code, speeding up data access to the system, testable and efficient using current best practices in Web development.<br />Fast learners, hardworking staff and proficient in today's programming tools."
+}

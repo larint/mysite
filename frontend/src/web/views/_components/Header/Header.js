@@ -8,27 +8,27 @@ const Header = (props) => {
             <div className="container">
                 <div className="row personal-profile">
                     <div className="col-md-4 personal-profile__avatar">
-                        <img className="" src="http://via.placeholder.com/350x400" alt="avatar" />
+                        <img className="" src="/assets/img/face.jpg" alt="avatar" />
                     </div>
                     <div className="col-md-8">
                         <p className="personal-profile__name">{profile.name}</p>
-                        <p className="personal-profile__work">{profile.work}</p>
+                        <p className="personal-profile__work">{profile.job}</p>
                         <div className="personal-profile__contacts">
                             <dl className="contact-list contact-list__opacity-titles">
                                 <dt>Birthday:</dt>
                                 <dd>{profile.birthDay}</dd>
                                 <dt>Phone:</dt>
-                                <dd><a href="tel:0389559611">{profile.phone}</a></dd>
+                                <dd><a href="tel:0389559611">{profile.contact?.phone}</a></dd>
                                 <dt>Email:</dt>
-                                <dd><a href="mailto:qdb611@gmail.com">{profile.email}</a></dd>
+                                <dd><a href="mailto:qdb611@gmail.com">{profile.contact?.email}</a></dd>
                                 <dt>Address:</dt>
-                                <dd>{profile.address}</dd>
+                                <dd>{profile.contact?.address}</dd>
                             </dl>
                         </div>
                         <p className="personal-profile__social">
-                            <a href={profile.socialLink1} target="_blank"><i className="fa fa-github"></i></a>
-                            <a href={profile.socialLink2} target="_blank"><i className="fa fa-linkedin-square"></i></a>
-                            <a href={profile.socialLink3} target="_blank"><i className="fa fa-facebook-square"></i></a>
+                            <a href={profile.social?.github} target="_blank"><i className="fa fa-github"></i></a>
+                            <a href={profile.social?.insta} target="_blank"><i className="fa fa-linkedin-square"></i></a>
+                            <a href={profile.social?.fb} target="_blank"><i className="fa fa-facebook-square"></i></a>
                         </p>
                     </div>
                 </div>
