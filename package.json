@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "publish": "git add . && git commit -m 'init' && git push origin master"
   },
   "engines": {
     "node": "12.x",
