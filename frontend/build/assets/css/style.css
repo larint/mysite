@@ -82,6 +82,10 @@ html {
     font-family: sans-serif
 }
 
+body {
+    margin: 0;
+}
+
 @-ms-viewport {
     width: device-width
 }

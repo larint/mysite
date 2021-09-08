@@ -4,7 +4,7 @@ const Header = (props) => {
     const { profile } = props
 
     return (
-        <header className="main-header" style={{ backgroundImage: 'url(assets/img/img_bg_header.jpg)' }}>
+        <header className="main-header" style={{ height: "487px", backgroundImage: 'url(assets/img/img_bg_header.jpg)' }}>
             <div className="container">
                 <div className="row personal-profile">
                     <div className="col-md-4 personal-profile__avatar">

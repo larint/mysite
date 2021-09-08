@@ -4,7 +4,7 @@ const Contact = (props) => {
     const { profile } = props
 
     return (
-        <div className="background" style={{ backgroundImage: 'url(assets/img/img_bg_main.jpg)' }}>
+        <div className="background" style={{ height: "628px", backgroundImage: 'url(assets/img/img_bg_main.jpg)' }}>
             <div id="contact" className="container section">
                 <div className="row">
                     <div className="col-md-12">
