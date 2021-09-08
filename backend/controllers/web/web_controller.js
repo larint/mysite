@@ -4,16 +4,20 @@ const db_1 = require("../../utility/db");
 class WebController {
     constructor() {
         this.getProfile = async (req, res) => {
-            return res.status(200).send(db_1.DB.getProfile());
+            let data = await db_1.DB.getProfile();
+            return res.status(200).json(data);
         };
         this.getResume = async (req, res) => {
-            return res.status(200).json(db_1.DB.getResume());
+            let data = await db_1.DB.getResume();
+            return res.status(200).json(data);
         };
         this.getProject = async (req, res) => {
-            return res.status(200).json(db_1.DB.getProject());
+            let data = await db_1.DB.getProject();
+            return res.status(200).json(data);
         };
         this.getBlog = async (req, res) => {
-            return res.status(200).json(db_1.DB.getPost());
+            let data = await db_1.DB.getPost();
+            return res.status(200).json(data);
         };
         this.getPost = async (req, res) => {
         };
