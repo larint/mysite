@@ -44,7 +44,6 @@ const Home = (props) => {
             <hr />
             <Resume />
             <Portfolio />
-            <Blog />
             <Contact profile={profile} />
         </div>
     )

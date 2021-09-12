@@ -5,6 +5,7 @@ import * as API from "../../../common/api"
 
 const Resume = (props) => {
     const [resume, setResume] = useState([])
+    const [skill, setSkill] = useState([])
 
     useQuery(
         [API.QUERY_KEY_GET_RESUME], () => API.getResume(),
@@ -15,6 +16,25 @@ const Resume = (props) => {
                     setResume(response.data)
                 } else {
                     setResume([])
+                }
+            },
+            onError: (error) => {
+                if (error?.response?.status === 401) {
+
+                }
+            }
+        }
+    )
+
+    useQuery(
+        [API.QUERY_KEY_GET_SKILL], () => API.getSkill(),
+        {
+            keepPreviousData: true,
+            onSuccess: (response) => {
+                if (response?.data) {
+                    setSkill(response.data)
+                } else {
+                    setSkill([])
                 }
             },
             onError: (error) => {
@@ -74,88 +94,40 @@ const Resume = (props) => {
                     <p className="section__description lower">my knowledge level in web technology</p>
                 </div>
                 <div className="col-md-5 mr-auto">
-                    <div className="progress-list__skill">
-                        <p>
-                            <span className="progress-list__skill-title">html5</span>
-                            <span className="progress-list__skill-value">80%</span>
-                        </p>
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div className="progress-list__skill">
-                        <p>
-                            <span className="progress-list__skill-title">css3</span>
-                            <span className="progress-list__skill-value">70%</span>
-                        </p>
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div className="progress-list__skill">
-                        <p>
-                            <span className="progress-list__skill-title">java script</span>
-                            <span className="progress-list__skill-value">90%</span>
-                        </p>
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div className="progress-list__skill">
-                        <p>
-                            <span className="progress-list__skill-title">jquery</span>
-                            <span className="progress-list__skill-value">80%</span>
-                        </p>
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        skill.length > 0 && skill.map((item, index) => (
+                            index < 3 && (
+                                <div className="progress-list__skill" key={index}>
+                                    <p>
+                                        <span className="progress-list__skill-title">{item.tec}</span>
+                                        <span className="progress-list__skill-value">{item.now}/{item.max}</span>
+                                    </p>
+                                    <div className="progress">
+                                        <div className="progress-bar" role="progressbar" style={{ width: (item.now / item.max * 100) + '%' }}>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        ))
+                    }
                 </div>
                 <div className="col-md-5 mr-auto">
-                    <div className="progress-list__skill">
-                        <p>
-                            <span className="progress-list__skill-title">bootstrap 3</span>
-                            <span className="progress-list__skill-value">80%</span>
-                        </p>
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div className="progress-list__skill">
-                        <p>
-                            <span className="progress-list__skill-title">grunt</span>
-                            <span className="progress-list__skill-value">60%</span>
-                        </p>
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div className="progress-list__skill">
-                        <p>
-                            <span className="progress-list__skill-title">git</span>
-                            <span className="progress-list__skill-value">90%</span>
-                        </p>
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                    </div>
-                    <div className="progress-list__skill">
-                        <p>
-                            <span className="progress-list__skill-title">adobe photoshop</span>
-                            <span className="progress-list__skill-value">80%</span>
-                        </p>
-                        <div className="progress">
-                            <div className="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        skill.length > 0 && skill.map((item, index) => (
+                            index > 2 && (
+                                <div className="progress-list__skill" key={index}>
+                                    <p>
+                                        <span className="progress-list__skill-title">{item.tec}</span>
+                                        <span className="progress-list__skill-value">{item.now}/{item.max}</span>
+                                    </p>
+                                    <div className="progress">
+                                        <div className="progress-bar" role="progressbar" style={{ width: (item.now / item.max * 100) + '%' }}>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        ))
+                    }
                 </div>
             </div>
         </section>

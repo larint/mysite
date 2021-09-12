@@ -1,0 +1,32 @@
+[
+    {
+        "tec": "php",
+        "now": "09",
+        "max": "10"
+    },
+    {
+        "tec": "nodejs",
+        "now": "08",
+        "max": "10"
+    },
+    {
+        "tec": "wordpress",
+        "now": "7.5",
+        "max": "10"
+    },
+    {
+        "tec": "typescript",
+        "now": "08",
+        "max": "10"
+    },
+    {
+        "tec": "javascript",
+        "now": "08",
+        "max": "10"
+    },
+    {
+        "tec": "laravel",
+        "now": "09",
+        "max": "10"
+    }
+]

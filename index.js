@@ -55,6 +55,6 @@ app.use((err, req, res, next) => {
     return res.json({ error: 'error' });
 });
 http.listen(process.env.PORT || 5050, () => {
-    console.log('listening @ 3000', new Date());
+    console.log(`listening @ ${process.env.PORT}`, new Date());
 });
 http.timeout = 900000;

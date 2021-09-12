@@ -252,11 +252,6 @@ label {
     margin-bottom: .5rem
 }
 
-button:focus {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color
-}
-
 button,
 input,
 optgroup,
@@ -12990,7 +12985,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     height: 100%;
     -o-object-fit: cover;
-    object-fit: cover
+    object-fit: fill
 }
 
 .project-card .project-card__info {
@@ -13023,7 +13018,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .project-card .project-card__link {
-    margin-top: 55px;
     font-family: Roboto Mono, monospace;
     font-size: 14px;
     line-height: 20px;
@@ -13894,4 +13888,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 .style-switcher.style-switcher--active {
     right: 0
+}
+
+.captcha label {
+    color: red !important;
+    font-size: 20px !important;
+}
+
+.captcha label:before,
+.captcha label:after {
+    content: '' !important;
 }

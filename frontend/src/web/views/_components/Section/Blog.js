@@ -39,7 +39,7 @@ const Blog = (props) => {
             <div className="row post-cards">
                 {
                     blog.length > 0 && blog.map((item, index) => (
-                        <BlogItem post={item} />
+                        <BlogItem post={item} key={index} />
                     ))
                 }
             </div>

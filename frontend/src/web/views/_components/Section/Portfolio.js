@@ -41,7 +41,7 @@ const Portfolio = (props) => {
                             </div>
                             <div className="col-md-6 col-lg-7 project-card__info">
                                 <h3 className="project-card__title">{item.name}</h3>
-                                <p className="project-card__description">{item.desc}</p>
+                                <p className="project-card__description" dangerouslySetInnerHTML={{ __html: item.desc }}></p>
                                 <p className="project-card__stack">Tech:</p>
                                 <ul className="tags">
                                     {
@@ -50,7 +50,7 @@ const Portfolio = (props) => {
                                         ))
                                     }
                                 </ul>
-                                <a href={item.linkRefer} className="project-card__link">{item.linkRefer}</a>
+                                <a href="" className="project-card__link">{item.linkRefer}</a>
                             </div>
                         </div>
                     ))

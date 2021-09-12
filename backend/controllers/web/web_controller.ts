@@ -1,5 +1,8 @@
 import { Request, Response, } from 'express'
+import { SendMailOptions } from 'nodemailer'
+import { Mailer } from '../../services/Mailer'
 import { DB } from '../../utility/db'
+import { makeid } from '../../utility/helper'
 
 class WebController {
 
@@ -30,6 +33,48 @@ class WebController {
 
     getOtherPost = async (req: Request, res: Response) => {
         // return res.status(200).json(post.data)
+    }
+
+    getSkill = async (req: Request, res: Response) => {
+        let data = await DB.getSkill()
+        return res.status(200).json(data)
+    }
+
+    sendContact = async (req: Request, res: Response) => {
+        let captcha = req.session?.captcha
+
+        if (captcha != req.body.captcha) {
+            return res.status(201).json({
+                msg: 'Captcha wrong!'
+            })
+        }
+
+        let content = (req.body.content as string).substring(0, 1000),
+            email = req.body.email,
+            name = req.body.name
+
+        let mailer = new Mailer
+
+        let config: SendMailOptions = {
+            from: `Recv - Dung Bui <${email}>`,
+            bcc: `${process.env.MAIL_RECEIVER}`,
+            subject: 'Email from Recv - Dung Bui',
+            text: `Name: ${name}\n\n${content}`
+        }
+
+        await mailer.send(config)
+
+        return res.status(200).json({
+            msg: 'send mail done'
+        })
+    }
+
+    getCaptcha = async (req: Request, res: Response) => {
+        let code = makeid()
+        req.session.captcha = code
+        return res.status(200).json({
+            code: code
+        })
     }
 }
 

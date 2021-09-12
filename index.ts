@@ -20,6 +20,7 @@ declare module 'express-session' {
 	export interface SessionData {
 		user: any
 		message: any
+		captcha: string
 	}
 }
 
@@ -87,6 +88,6 @@ app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFuncti
 })
 
 http.listen(process.env.PORT || 5050, () => {
-	console.log('listening @ 3000', new Date())
+	console.log(`listening @ ${process.env.PORT}`, new Date())
 })
 http.timeout = 900000 //15 minute

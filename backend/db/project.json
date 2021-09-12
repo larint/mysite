@@ -1,23 +1,30 @@
 [
     {
-        "name": "MOBILE AND DESKTOP APP FOR LONDON HOSTEL STORE",
-        "desc": "Do answered bachelor occasion in of offended no concerns. Supply worthy warmth branch of no ye. Voice tried known to as my to. Though wished merits or be. Alone visit use these smart rooms ham.",
-        "tech": "html5,css3,JavaScript,bower,grunt",
-        "linkRefer": "",
+        "name": "Store statistics management system on LINE platform",
+        "desc": "The system is responsible for managing, aggregating and calculating statistical data of stores from the LINE API.<br/>Visually display statistics by charts, list of tables. allows managing user groups, ranking stores according to criteria. data is collected automatically from LINE's API.",
+        "tech": "typescript,expressjs,nodejs,d3.js",
+        "linkRefer": "ss-line-bunseki",
         "thumbnail": "/assets/img/project/prj1.png"
     },
     {
-        "name": "WEB APP PAGE FOR TREVEL COMPANY",
-        "desc": "Do answered bachelor occasion in of offended no concerns. Supply worthy warmth branch of no ye. Voice tried known to as my to. Though wished merits or be. Alone visit use these smart rooms ham.",
-        "tech": "html5,css3,JavaScript,bower,grunt",
-        "linkRefer": "",
-        "thumbnail": "/assets/img/project/prj1.png"
+        "name": "Student health survey system",
+        "desc": "Medical examination management system for university students. allows students to take surveys so that medical staff can conduct physical exams faster.<br/>Support to print medical examination card numbers and health status records of students.",
+        "tech": "laravel,php",
+        "linkRefer": "hira-kenshin",
+        "thumbnail": "/assets/img/project/prj2.png"
     },
     {
-        "name": "ADMIN TEMPLATE FOR PHOTO SERVICE",
-        "desc": "Do answered bachelor occasion in of offended no concerns. Supply worthy warmth branch of no ye. Voice tried known to as my to. Though wished merits or be. Alone visit use these smart rooms ham.",
-        "tech": "html5,css3,JavaScript,bower,grunt",
-        "linkRefer": "",
-        "thumbnail": "/assets/img/project/prj1.png"
+        "name": "Maintain and develop sales website",
+        "desc": "Repair system errors, develop new functions on the website such as search, sort, etc. upgrade other features of the existing system.",
+        "tech": "html5,css3,JavaScript,eccube,smarty",
+        "linkRefer": "bentotehai",
+        "thumbnail": "/assets/img/project/prj3.png"
+    },
+    {
+        "name": "Convert from html to wordpress",
+        "desc": "Convert from pure html page to wordpress. Create pages, layout according to wordpress structure, build search function for website etc.",
+        "tech": "wordpress,php",
+        "linkRefer": "popal",
+        "thumbnail": "/assets/img/project/prj4.png"
     }
 ]

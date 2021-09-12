@@ -8,6 +8,7 @@ const profile_json_1 = __importDefault(require("../db/profile.json"));
 const resume_json_1 = __importDefault(require("../db/resume.json"));
 const project_json_1 = __importDefault(require("../db/project.json"));
 const post_json_1 = __importDefault(require("../db/post.json"));
+const skill_json_1 = __importDefault(require("../db/skill.json"));
 class DB {
 }
 exports.DB = DB;
@@ -22,4 +23,7 @@ DB.getProject = async () => {
 };
 DB.getPost = async () => {
     return post_json_1.default;
+};
+DB.getSkill = async () => {
+    return skill_json_1.default;
 };

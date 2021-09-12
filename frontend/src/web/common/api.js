@@ -14,6 +14,9 @@ export const API_GET_PROJECT = BASE_URL + "/get-project"
 export const API_GET_BLOG = BASE_URL + "/get-blog"
 export const API_GET_POST = BASE_URL + "/get-post"
 export const API_GET_OTHER_POST = BASE_URL + "/get-other-post"
+export const API_GET_SKILL = BASE_URL + "/get-skill"
+export const API_SEND_CONTACT = BASE_URL + "/send-contact"
+export const API_GET_CAPTCHA = BASE_URL + "/get-captcha"
 
 /* QUERY KEY */
 export const QUERY_KEY_GET_PROFILE = "getProfile"
@@ -22,6 +25,9 @@ export const QUERY_KEY_GET_PROJECT = "getProject"
 export const QUERY_KEY_GET_BLOG = "getBlog"
 export const QUERY_KEY_GET_POST = "getPost"
 export const QUERY_KEY_GET_OTHER_POST = "getOtherPost"
+export const QUERY_KEY_GET_SKILL = "getSkill"
+export const QUERY_KEY_GET_CAPTCHA = "getCaptcha"
+
 /* AXIOS CONFIG */
 const axiosInstance = axios.create({
     withCredentials: true,
@@ -54,5 +60,22 @@ export async function getPost(slugPost) {
 export async function getOtherPost(slugPost) {
     return await axiosInstance.post(API_GET_OTHER_POST, {
         slug: slugPost
+    })
+}
+
+export async function getSkill(slugPost) {
+    return await axiosInstance.post(API_GET_SKILL)
+}
+
+export async function getCaptcha() {
+    return await axiosInstance.post(API_GET_CAPTCHA)
+}
+
+export function sendContact(name, email, content, captcha) {
+    return axiosInstance.post(API_SEND_CONTACT, {
+        name: name,
+        email: email,
+        content: content,
+        captcha: captcha
     })
 }

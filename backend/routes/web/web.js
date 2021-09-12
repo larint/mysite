@@ -12,4 +12,7 @@ router.post('/get-project', web_controller_1.default.getProject);
 router.post('/get-blog', web_controller_1.default.getBlog);
 router.post('/get-post', web_controller_1.default.getPost);
 router.post('/get-other-post', web_controller_1.default.getOtherPost);
+router.post('/get-skill', web_controller_1.default.getSkill);
+router.post('/send-contact', web_controller_1.default.sendContact);
+router.post('/get-captcha', web_controller_1.default.getCaptcha);
 exports.default = router;

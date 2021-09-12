@@ -4,7 +4,7 @@ const Header = (props) => {
     const { profile } = props
 
     return (
-        <header className="main-header" style={{ height: "487px", backgroundImage: 'url(assets/img/img_bg_header.jpg)' }}>
+        <header className="main-header" style={{ backgroundImage: 'url(assets/img/img_bg_header.jpg)' }}>
             <div className="container">
                 <div className="row personal-profile">
                     <div className="col-md-4 personal-profile__avatar">
@@ -18,9 +18,9 @@ const Header = (props) => {
                                 <dt>Birthday:</dt>
                                 <dd>{profile.birthDay}</dd>
                                 <dt>Phone:</dt>
-                                <dd><a href="tel:0389559611">{profile.contact?.phone}</a></dd>
+                                <dd><a href={"tel:" + profile.contact?.phone}>{profile.contact?.phone}</a></dd>
                                 <dt>Email:</dt>
-                                <dd><a href="mailto:qdb611@gmail.com">{profile.contact?.email}</a></dd>
+                                <dd><a href={"mailto:" + profile.contact?.email}>{profile.contact?.email}</a></dd>
                                 <dt>Address:</dt>
                                 <dd>{profile.contact?.address}</dd>
                             </dl>
