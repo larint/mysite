@@ -4,7 +4,9 @@ import RouteWithLayout from './admin/components/RouteWithLayout'
 import { MainLayout } from './admin/layouts'
 import {
     DashboardView,
-    BlogView
+    BlogListView,
+    BlogCreateView,
+    BlogEditView
 } from './admin/views'
 
 const RouterAdmin = () => {
@@ -19,8 +21,20 @@ const RouterAdmin = () => {
             <RouteWithLayout
                 exact
                 layout={MainLayout}
-                component={BlogView}
+                component={BlogListView}
                 path='/admin/blog'
+            />
+            <RouteWithLayout
+                exact
+                layout={MainLayout}
+                component={BlogCreateView}
+                path='/admin/blog/create'
+            />
+            <RouteWithLayout
+                exact
+                layout={MainLayout}
+                component={BlogEditView}
+                path='/admin/blog/edit/:id'
             />
         </Switch>
     )

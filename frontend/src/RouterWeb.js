@@ -4,7 +4,8 @@ import { RouteWithLayout } from './web/components'
 import { MainLayout } from './web/layouts'
 import {
     HomeView,
-    BlogView
+    BlogView,
+    BlogDetailView
 } from './web/views'
 
 const RouterWeb = () => {
@@ -20,6 +21,12 @@ const RouterWeb = () => {
                 exact
                 layout={MainLayout}
                 component={BlogView}
+                path='/blog'
+            />
+            <RouteWithLayout
+                exact
+                layout={MainLayout}
+                component={BlogDetailView}
                 path='/blog/:slug'
             />
         </Switch>

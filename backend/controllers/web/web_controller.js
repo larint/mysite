@@ -18,7 +18,7 @@ class WebController {
             return res.status(200).json(data);
         };
         this.getBlog = async (req, res) => {
-            let data = await db_1.DB.getPost();
+            let data = await db_1.DB.getPost('');
             return res.status(200).json(data);
         };
         this.getPost = async (req, res) => {

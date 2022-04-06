@@ -5,20 +5,17 @@ const BlogMenu = (props) => {
     const { location } = props
 
     return (
-        <div className="menu">
+        <div className="menu" style={{ boxShadow: '0 5px 8px 0 rgb(0 0 0 / 14%)' }}>
             <div className="container">
                 <div className="row">
-                    <div className="menu__wrapper d-none d-lg-block col-md-12">
+                    <div className="menu__wrapper d-none d-lg-block col-md-12" style={{ marginTop: '25px' }}>
                         <nav className="">
                             <ul>
                                 <li>
-                                    <Link to={{ pathname: "/" }}>Home</Link>
+                                    <Link to={{ pathname: "/" }} style={{ color: '#555' }}>Home</Link>
                                 </li>
                                 <li>
-                                    <HashLink smooth to={location.pathname + "#posts"}>other posts</HashLink>
-                                </li>
-                                <li>
-                                    <HashLink smooth to={location.pathname + "#contact"}>Contact</HashLink>
+                                    <Link to="/blog" style={{ color: '#555' }}>Blog</Link>
                                 </li>
                             </ul>
                         </nav>

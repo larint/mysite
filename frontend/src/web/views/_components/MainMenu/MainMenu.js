@@ -1,4 +1,4 @@
-import { withRouter } from "react-router-dom"
+import { Link, withRouter } from "react-router-dom"
 import { HashLink } from 'react-router-hash-link'
 
 const MainMenu = (props) => {
@@ -11,13 +11,16 @@ const MainMenu = (props) => {
                         <nav className="">
                             <ul>
                                 <li>
-                                    <HashLink smooth to="#hello">Hello</HashLink>
+                                    <HashLink smooth to="#hello">Me</HashLink>
                                 </li>
                                 <li>
                                     <HashLink smooth to="#resume">Resume</HashLink>
                                 </li>
                                 <li>
                                     <HashLink smooth to="#portfolio">Portfolio</HashLink>
+                                </li>
+                                <li>
+                                    <Link to="/blog">Blog</Link>
                                 </li>
                                 <li>
                                     <HashLink smooth to="#contact">Contact</HashLink>

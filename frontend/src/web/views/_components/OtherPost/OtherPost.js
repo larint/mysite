@@ -1,4 +1,4 @@
-import { withRouter } from "react-router-dom"
+import { Link, withRouter } from "react-router-dom"
 import React, { useState } from "react"
 import { useQuery } from "react-query"
 import * as API from "../../../common/api"
@@ -27,58 +27,14 @@ const OtherPost = (props) => {
     )
 
     return (
-        <section id="posts" className="container section">
-            <div className="row">
-                <div className="col-md-12">
-                    <h2 id="other_posts" className="section__title">Other Posts_</h2>
-                </div>
-            </div>
-
+        <section id="posts" className="container section" style={{ paddingTop: '149px' }}>
             <div className="row posts">
-                <div className="col-md-5 mr-auto">
+                <div className="col-md-12 mr-auto">
                     <div className="posts__item">
-                        <a href="">
-                            <h3 className="posts__title">What’s new in the IT Industry?</h3>
-                            <p className="posts__description">Invitation excellence imprudence understood it continuing to.
-                                Ye show done an into.</p>
-                        </a>
-                    </div>
-                    <div className="posts__item">
-                        <a href="">
-                            <h3 className="posts__title">How I organize my work with code</h3>
-                            <p className="posts__description">Invitation excellence imprudence understood it continuing to.
-                                Ye show done an into.</p>
-                        </a>
-                    </div>
-                    <div className="posts__item">
-                        <a href="">
-                            <h3 className="posts__title">How to use css-preprocessor</h3>
-                            <p className="posts__description">Invitation excellence imprudence understood it continuing to.
-                                Ye show done an into.</p>
-                        </a>
-                    </div>
-                </div>
-                <div className="col-md-5 mr-auto">
-                    <div className="posts__item">
-                        <a href="">
-                            <h3 className="posts__title">What’s new in the IT Industry?</h3>
-                            <p className="posts__description">Invitation excellence imprudence understood it continuing to.
-                                Ye show done an into.</p>
-                        </a>
-                    </div>
-                    <div className="posts__item">
-                        <a href="">
-                            <h3 className="posts__title">How I organize my work with code</h3>
-                            <p className="posts__description">Invitation excellence imprudence understood it continuing to.
-                                Ye show done an into.</p>
-                        </a>
-                    </div>
-                    <div className="posts__item">
-                        <a href="">
-                            <h3 className="posts__title">How to use css-preprocessor</h3>
-                            <p className="posts__description">Invitation excellence imprudence understood it continuing to.
-                                Ye show done an into.</p>
-                        </a>
+                        <Link to="/blog/1">
+                            <h3 className="posts__title">Tổng quan và hướng dẫn sử dụng jQuery</h3>
+                            <p className="posts__description">jQuery là thư viện được viết từ JavaScript, jQuery giúp xây dựng các chức năng bằng Javascript dễ dàng, nhanh và giàu tính năng hơn.</p>
+                        </Link>
                     </div>
                 </div>
             </div>

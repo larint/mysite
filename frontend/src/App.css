@@ -19,3 +19,8 @@
 .lower {
     text-transform: lowercase !important;
 }
+
+.error {
+    color: red;
+    font-size: 12px;
+}

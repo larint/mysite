@@ -25,8 +25,11 @@ const Sidebar = (props) => {
             case "1":
                 history.push('/admin')
                 break
-            case "2":
+            case "21":
                 history.push('/admin/blog')
+                break
+            case "22":
+                history.push('/admin/blog/create')
                 break
             default:
                 break
@@ -42,15 +45,16 @@ const Sidebar = (props) => {
                 <Menu.Item key="1" icon={<PieChartOutlined />}>
                     Thống Kê
                 </Menu.Item>
-                <Menu.Item key="2" icon={<DesktopOutlined />}>
-                    Bài Viết
-                </Menu.Item>
-                <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-                    <Menu.Item key="3">Tom</Menu.Item>
-                    <Menu.Item key="4">Bill</Menu.Item>
-                    <Menu.Item key="5">Alex</Menu.Item>
+                <SubMenu key="2" icon={<DesktopOutlined />} title="Bài Viết">
+                    <Menu.Item key="21">Danh sách</Menu.Item>
+                    <Menu.Item key="22">Tạo mới</Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
+                <SubMenu key="3" icon={<UserOutlined />} title="User">
+                    <Menu.Item key="31">Tom</Menu.Item>
+                    <Menu.Item key="32">Bill</Menu.Item>
+                    <Menu.Item key="33">Alex</Menu.Item>
+                </SubMenu>
+                <SubMenu key="4" icon={<TeamOutlined />} title="Team">
                     <Menu.Item key="6">Team 1</Menu.Item>
                     <Menu.Item key="8">Team 2</Menu.Item>
                 </SubMenu>

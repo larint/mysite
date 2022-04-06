@@ -22,7 +22,7 @@ class WebController {
     }
 
     getBlog = async (req: Request, res: Response) => {
-        let data = await DB.getPost()
+        let data = await DB.getPost('')
         return res.status(200).json(data)
     }
 

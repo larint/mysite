@@ -1,2 +1,2 @@
 export { default as DashboardView } from "./Dashboard"
-export { default as BlogView } from "./Blog"
+export { BlogListView, BlogCreateView, BlogEditView } from "./Blog"
