@@ -44,11 +44,22 @@ class HomeController {
         })
     }
 
+    deletePost = async (req: Request, res: Response) => {
+        let post = await DB.deletePost(req.body.id, req.body.sha)
+        if (post) {
+            return res.status(200).json({
+                message: 'delete post success'
+            })
+        }
+
+        return res.status(201).json({
+            message: 'delete post failed'
+        })
+    }
 
     getListPost = async (req: Request, res: Response) => {
-        await DB.getListPost((posts) => {
-            return res.status(200).json(posts)
-        })
+        let posts = await DB.getListPost()
+        return res.status(200).json(posts)
     }
 
     getPost = async (req: Request, res: Response) => {

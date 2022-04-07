@@ -22,13 +22,16 @@ class WebController {
     }
 
     getBlog = async (req: Request, res: Response) => {
-        let data = await DB.getPost('')
-        return res.status(200).json(data)
+        let posts = await DB.getListPost()
+        return res.status(200).json(posts)
     }
 
     getPost = async (req: Request, res: Response) => {
+        let id = req.body.id
 
-        // return res.status(200).json(post.data)
+        let post = await DB.getPost(id)
+
+        return res.status(200).json(post)
     }
 
     getOtherPost = async (req: Request, res: Response) => {

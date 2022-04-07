@@ -10,9 +10,6 @@ const project_json_1 = __importDefault(require("../db/project.json"));
 const skill_json_1 = __importDefault(require("../db/skill.json"));
 const helper_1 = require("./helper");
 const git_api_1 = require("../services/git_api");
-const glob_1 = require("glob");
-const constant_1 = require("../config/constant");
-const fs_1 = __importDefault(require("fs"));
 const uuid_1 = require("uuid");
 class DB {
 }
@@ -31,8 +28,17 @@ DB.getSkill = async () => {
 };
 DB.getPost = async (id) => {
     let api = new git_api_1.GitAPI();
-    let post = await api.getFile(`backend/db/blog/${id}.json`);
-    return post;
+    let d = await api.getFile(`backend/db/blog/${id}.json`);
+    let data = JSON.parse(Buffer.from(d.content, 'base64').toString('utf-8'));
+    data.sha = d.sha;
+    return data;
+};
+DB.deletePost = async (id, sha) => {
+    if (!id) {
+        return false;
+    }
+    let api = new git_api_1.GitAPI();
+    return await api.deleteFile(`backend/db/blog/${id}.json`, { message: 'delete post', sha: sha });
 };
 DB.updatePost = async (title, content, sha, id) => {
     if (!content) {
@@ -67,15 +73,28 @@ DB.savePost = async (title, content) => {
     let api = new git_api_1.GitAPI();
     return await api.createFile(`backend/db/blog/${fileName}.json`, { message: 'create post', content: contentEncode });
 };
-DB.getListPost = async (callback) => {
-    glob_1.glob(`${constant_1.appRoot}/backend/db/blog/*.json`, {}, function (er, files) {
+DB.getListPost = async () => {
+    let api = new git_api_1.GitAPI();
+    let list = await api.getFile(`backend/db/blog`);
+    return new Promise(async (res, rej) => {
         let posts = [];
-        for (const f of files) {
-            let data = fs_1.default.readFileSync(f, { encoding: 'utf8', flag: 'r' });
-            data = JSON.parse(data);
-            data.content = '';
-            posts.push(data);
+        for (const file of list) {
+            try {
+                let d = await api.getFile(file.path);
+                let data = JSON.parse(Buffer.from(d.content, 'base64').toString('utf-8'));
+                let post = {
+                    createAt: data.createAt,
+                    id: data.id,
+                    slug: data.slug,
+                    title: data.title,
+                    sha: file.sha
+                };
+                posts.push(post);
+            }
+            catch (error) {
+                console.log(error);
+            }
         }
-        callback(posts);
+        res(posts);
     });
 };

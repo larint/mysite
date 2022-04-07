@@ -1,13 +1,10 @@
 import { default as profile } from '../db/profile.json'
 import { default as resume } from '../db/resume.json'
 import { default as project } from '../db/project.json'
-import { default as post } from '../db/post.json'
+
 import { default as skill } from '../db/skill.json'
 import { string_to_slug } from './helper'
 import { GitAPI } from '../services/git_api'
-import { glob } from 'glob'
-import { appRoot } from '../config/constant'
-import fs from 'fs'
 import { v4 as uuidv4 } from 'uuid'
 
 class DB {
@@ -30,9 +27,22 @@ class DB {
 
     static getPost = async (id: string) => {
         let api = new GitAPI()
-        let post = await api.getFile(`backend/db/blog/${id}.json`)
-        return post
+        let d = await api.getFile(`backend/db/blog/${id}.json`)
+
+        let data = JSON.parse(Buffer.from(d.content, 'base64').toString('utf-8'))
+        data.sha = d.sha
+
+        return data
     }
+
+    static deletePost = async (id: string, sha: string) => {
+        if (!id) {
+            return false
+        }
+        let api = new GitAPI()
+        return await api.deleteFile(`backend/db/blog/${id}.json`, { message: 'delete post', sha: sha })
+    }
+
 
     static updatePost = async (title: string, content: string, sha: string, id: string) => {
         if (!content) {
@@ -77,19 +87,30 @@ class DB {
         return await api.createFile(`backend/db/blog/${fileName}.json`, { message: 'create post', content: contentEncode })
     }
 
-    static getListPost = async (callback: (data: any[]) => void) => {
+    static getListPost = async () => {
+        let api = new GitAPI()
+        let list = await api.getFile(`backend/db/blog`)
 
-        glob(`${appRoot}/backend/db/blog/*.json`, {}, function (er, files) {
-            let posts = []
-            for (const f of files) {
-                let data: any = fs.readFileSync(f, { encoding: 'utf8', flag: 'r' })
-                data = JSON.parse(data)
-                data.content = ''
-                posts.push(data)
+        return new Promise<void>(async (res, rej) => {
+            let posts: any = []
+            for (const file of list) {
+                try {
+                    let d = await api.getFile(file.path)
+                    let data = JSON.parse(Buffer.from(d.content, 'base64').toString('utf-8'))
+                    let post = {
+                        createAt: data.createAt,
+                        id: data.id,
+                        slug: data.slug,
+                        title: data.title,
+                        sha: file.sha
+                    }
+                    posts.push(post)
+                } catch (error) {
+                    console.log(error);
+                }
             }
-            callback(posts)
+            res(posts)
         })
-
     }
 }
 

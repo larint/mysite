@@ -27,7 +27,7 @@ const RouterWeb = () => {
                 exact
                 layout={MainLayout}
                 component={BlogDetailView}
-                path='/blog/:slug'
+                path='/blog/:id'
             />
         </Switch>
     )

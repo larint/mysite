@@ -1,5 +1,5 @@
 import { withRouter } from "react-router-dom"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useQuery } from "react-query"
 import * as API from "../../common/api"
 import {
@@ -9,7 +9,6 @@ import {
     Hello,
     Resume,
     Portfolio,
-    Blog,
     Contact
 } from '../_components'
 
@@ -34,6 +33,10 @@ const Home = (props) => {
             }
         }
     )
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <div>

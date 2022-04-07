@@ -11,6 +11,7 @@ export const API_AD_SAVE_POST = AD_BASE_URL + "/blog/save"
 export const API_AD_GET_LIST_POST = AD_BASE_URL + "/blog/list"
 export const API_AD_GET_POST = AD_BASE_URL + "/blog/get-post"
 export const API_AD_UPDATE_POST = AD_BASE_URL + "/blog/save"
+export const API_AD_DELETE_POST = AD_BASE_URL + "/blog/delete"
 
 /* AXIOS CONFIG */
 const axiosInstance = axios.create({
@@ -33,4 +34,8 @@ export async function getPost(data) {
 
 export async function getListPost(data) {
     return await axiosInstance.post(API_AD_GET_LIST_POST, data)
+}
+
+export async function deletePost(data) {
+    return await axiosInstance.post(API_AD_DELETE_POST, data)
 }

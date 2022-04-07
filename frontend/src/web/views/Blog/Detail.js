@@ -1,17 +1,19 @@
-import { withRouter } from "react-router-dom"
-import React, { useState } from "react"
+import { Link, withRouter } from "react-router-dom"
+import React, { useEffect, useState } from "react"
 import { useQuery } from "react-query"
 import * as API from "../../common/api"
 import {
-    BlogDetail,
     Contact,
     OtherPost,
     BlogMenu,
-    BlogMobileMenu
+    BlogMobileMenu,
+    PlaceholdeLoading
 } from "../_components"
 
 const Detail = (props) => {
     const [profile, setProfile] = useState({})
+    const [post, setPost] = useState(null)
+    const { id } = props.match.params
 
     useQuery(
         [API.QUERY_KEY_GET_PROFILE], () => API.getProfile(),
@@ -32,11 +34,48 @@ const Detail = (props) => {
         }
     )
 
+    useQuery(
+        [API.QUERY_KEY_GET_POST], () => API.getPost({ id }),
+        {
+            keepPreviousData: true,
+            onSuccess: (response) => {
+                if (response?.data) {
+                    setPost(response.data)
+                }
+            },
+            onError: (error) => {
+            }
+        }
+    )
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [post])
+
     return (
         <div>
             <BlogMenu />
             <BlogMobileMenu />
-            <BlogDetail />
+            <div className="container">
+                <div className="article" style={{ marginTop: '114px' }}>
+                    {
+                        post ? (
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <Link to="/blog"><i className="fa fa-long-arrow-left" aria-hidden="true"></i> Back</Link>
+                                    <p className="article__title">{post?.title}</p>
+                                    <p className="article_date">{(new Date(post.createAt)).toLocaleString()}</p>
+                                    <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
+                                    <p className="article__share">Share this post:
+                                        <a><i className="fa fa-linkedin-square"></i></a>
+                                        <a><i className="fa fa-facebook-square"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        ) : <PlaceholdeLoading />
+                    }
+                </div>
+            </div>
             <Contact profile={profile} />
         </div>
     )

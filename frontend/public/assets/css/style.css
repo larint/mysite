@@ -13126,7 +13126,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .post-cards .post-cards__info {
     border: 1px solid #f1f1f1;
-    padding: 20px 40px 40px 20px
+    padding: 20px 40px 0px 20px
 }
 
 .post-cards .post-cards__date {

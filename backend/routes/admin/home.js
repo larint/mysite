@@ -12,4 +12,5 @@ router.post('/blog/save', home_controller_1.default.savePost);
 router.post('/blog/list', home_controller_1.default.getListPost);
 router.post('/blog/get-post', home_controller_1.default.getPost);
 router.put('/blog/save', home_controller_1.default.updatePost);
+router.post('/blog/delete', home_controller_1.default.deletePost);
 exports.default = router;

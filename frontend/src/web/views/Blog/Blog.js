@@ -1,17 +1,18 @@
 import { withRouter } from "react-router-dom"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useQuery } from "react-query"
 import * as API from "../../common/api"
 import {
     Contact,
     BlogItem,
     BlogMenu,
-    BlogMobileMenu
+    BlogMobileMenu,
+    PlaceholdeLoading
 } from "../_components"
 
 const Blog = (props) => {
     const [profile, setProfile] = useState({})
-    const [postList, setBlog] = useState([])
+    const [postList, setPostList] = useState([])
 
     useQuery(
         [API.QUERY_KEY_GET_PROFILE], () => API.getProfile(),
@@ -38,9 +39,9 @@ const Blog = (props) => {
             keepPreviousData: true,
             onSuccess: (response) => {
                 if (response?.data) {
-                    setBlog(response.data)
+                    setPostList(response.data)
                 } else {
-                    setBlog([])
+                    setPostList([])
                 }
             },
             onError: (error) => {
@@ -51,16 +52,24 @@ const Blog = (props) => {
         }
     )
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [postList])
+
     return (
         <div>
             <BlogMenu />
             <BlogMobileMenu />
             <section id="blog" className="container section" style={{ paddingTop: '159px' }}>
-                <div className="row post-cards" >
-                    {postList.map((post) => (
-                        <BlogItem post={post} />
-                    ))}
-                </div>
+                {
+                    postList.length > 0 ? (
+                        <div className="row post-cards" >
+                            {postList.map((post, index) => (
+                                <BlogItem key={index} post={post} />
+                            ))}
+                        </div>
+                    ) : <PlaceholdeLoading />
+                }
             </section>
             <Contact profile={profile} />
         </div>

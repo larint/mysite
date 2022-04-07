@@ -57,13 +57,7 @@ const Main = (props) => {
                         </Row>
                     </Header>
                     <Content style={{ margin: '0 16px' }}>
-                        <Breadcrumb style={{ margin: '16px 0' }}>
-                            <Breadcrumb.Item>Sys</Breadcrumb.Item>
-                            <Breadcrumb.Item>Thống Kê</Breadcrumb.Item>
-                        </Breadcrumb>
-                        <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                            {children}
-                        </div>
+                        {children}
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>©2021</Footer>
                 </Layout>

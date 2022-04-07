@@ -9,5 +9,6 @@ router.post('/blog/save', HomeController.savePost)
 router.post('/blog/list', HomeController.getListPost)
 router.post('/blog/get-post', HomeController.getPost)
 router.put('/blog/save', HomeController.updatePost)
+router.post('/blog/delete', HomeController.deletePost)
 
 export default router

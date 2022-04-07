@@ -51,10 +51,8 @@ export async function getBlog() {
     return await axiosInstance.post(API_GET_BLOG)
 }
 
-export async function getPost(slugPost) {
-    return await axiosInstance.post(API_GET_POST, {
-        slug: slugPost
-    })
+export async function getPost(data) {
+    return await axiosInstance.post(API_GET_POST, data)
 }
 
 export async function getOtherPost(slugPost) {

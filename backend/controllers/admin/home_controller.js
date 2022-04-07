@@ -38,10 +38,20 @@ class HomeController {
                 message: 'update post failed'
             });
         };
-        this.getListPost = async (req, res) => {
-            await db_1.DB.getListPost((posts) => {
-                return res.status(200).json(posts);
+        this.deletePost = async (req, res) => {
+            let post = await db_1.DB.deletePost(req.body.id, req.body.sha);
+            if (post) {
+                return res.status(200).json({
+                    message: 'delete post success'
+                });
+            }
+            return res.status(201).json({
+                message: 'delete post failed'
             });
+        };
+        this.getListPost = async (req, res) => {
+            let posts = await db_1.DB.getListPost();
+            return res.status(200).json(posts);
         };
         this.getPost = async (req, res) => {
             let id = req.body.id;

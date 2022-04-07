@@ -16,23 +16,15 @@ class GitAPI {
 
     getFile = async (path: string) => {
         try {
-
-            let response2 = await fetch(`https://api.github.com/repos/${GIT.o}/${GIT.r}/contents/${path}`, {
-                method: 'get'
+            let response = await fetch(`https://api.github.com/repos/${GIT.owner}/${GIT.repo}/contents/${path}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'text/plain',
+                    'Authorization': `Bearer ${GIT.token}`
+                }
             })
-            let data2 = await response2.json()
 
-            let response1 = await fetch(data2.download_url, {
-                method: 'get'
-            })
-            let data1 = await response1.json()
-
-            let post = {
-                post: data1,
-                sha: data2.sha
-            }
-
-            return post
+            return await response.json()
         } catch (err) {
             console.log(err);
             return false
@@ -41,11 +33,11 @@ class GitAPI {
 
     createFile = async (path: string, data: createFileData) => {
         try {
-            let response = await fetch(`https://api.github.com/repos/${GIT.o}/${GIT.r}/contents/${path}`, {
+            let response = await fetch(`https://api.github.com/repos/${GIT.owner}/${GIT.repo}/contents/${path}`, {
                 method: 'put',
                 headers: {
                     'Content-Type': 'text/plain',
-                    'Authorization': `Bearer ${GIT.t}`
+                    'Authorization': `Bearer ${GIT.token}`
                 },
                 body: JSON.stringify(data),
             })
@@ -58,11 +50,11 @@ class GitAPI {
 
     updateFile = async (path: string, data: createFileData) => {
         try {
-            let response = await fetch(`https://api.github.com/repos/${GIT.o}/${GIT.r}/contents/${path}`, {
+            let response = await fetch(`https://api.github.com/repos/${GIT.owner}/${GIT.repo}/contents/${path}`, {
                 method: 'put',
                 headers: {
                     'Content-Type': 'text/plain',
-                    'Authorization': `Bearer ${GIT.t}`
+                    'Authorization': `Bearer ${GIT.token}`
                 },
                 body: JSON.stringify(data),
             })
@@ -75,22 +67,17 @@ class GitAPI {
 
     deleteFile = async (path: string, data: deleteFileData) => {
         try {
-            let response = await fetch(`https://api.github.com/repos/${GIT.o}/${GIT.r}/contents/${path}`, {
+            let response = await fetch(`https://api.github.com/repos/${GIT.owner}/${GIT.repo}/contents/${path}`, {
                 method: 'delete',
                 headers: {
                     'Content-Type': 'text/plain',
-                    'Authorization': `Bearer ${GIT.t}`
+                    'Authorization': `Bearer ${GIT.token}`
                 },
                 body: JSON.stringify(data),
-            }).then((jsonResponse) => {
-                console.log('jsonResponse', jsonResponse);
-            }).catch((err) => {
-                // handle error
-                console.error('err', err);
-            });
-            return true
+            })
+            return await response.json()
         } catch (err) {
-            console.log('err ', err);
+            console.log(err);
             return false
         }
     }
