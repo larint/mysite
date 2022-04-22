@@ -1,4 +1,4 @@
-import { Link, withRouter } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { HashLink } from 'react-router-hash-link'
 
 const MainMenu = (props) => {
@@ -39,4 +39,4 @@ const MainMenu = (props) => {
     )
 }
 
-export default withRouter(MainMenu)
+export default MainMenu

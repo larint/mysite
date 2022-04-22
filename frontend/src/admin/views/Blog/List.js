@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useMutation, useQuery } from "react-query"
-import { withRouter } from "react-router"
 import * as API from "../../common/api"
 import { Table, Modal, Space, Breadcrumb, message } from 'antd'
 import { Link } from "react-router-dom"
@@ -92,8 +91,8 @@ const Blog = (props) => {
     return (
         <div>
             <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>Sys</Breadcrumb.Item>
-                <Breadcrumb.Item>Danh sách bài viết</Breadcrumb.Item>
+                <Breadcrumb.Item>Bài viết</Breadcrumb.Item>
+                <Breadcrumb.Item>Danh sách</Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                 <p style={{ fontSize: '13px', color: '#9b9b9b', marginLeft: '8px' }}>Tổng số: {listPost.length} bài</p>
@@ -103,4 +102,4 @@ const Blog = (props) => {
     )
 }
 
-export default withRouter(Blog)
+export default Blog

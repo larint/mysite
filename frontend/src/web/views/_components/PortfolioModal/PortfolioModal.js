@@ -1,4 +1,3 @@
-import { withRouter } from "react-router-dom"
 
 const PortfolioModal = (props) => {
     return (
@@ -43,4 +42,4 @@ const PortfolioModal = (props) => {
     )
 }
 
-export default withRouter(PortfolioModal)
+export default PortfolioModal

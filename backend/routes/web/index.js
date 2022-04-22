@@ -6,6 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.apiWebRoute = void 0;
 const express_1 = require("express");
 const web_1 = __importDefault(require("./web"));
-let apiWebRoute = express_1.Router();
+let apiWebRoute = (0, express_1.Router)();
 exports.apiWebRoute = apiWebRoute;
 apiWebRoute.use('/', web_1.default);

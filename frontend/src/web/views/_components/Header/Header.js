@@ -1,4 +1,3 @@
-import { withRouter } from "react-router-dom"
 
 const Header = (props) => {
     const { profile } = props
@@ -37,4 +36,4 @@ const Header = (props) => {
     )
 }
 
-export default withRouter(Header)
+export default Header

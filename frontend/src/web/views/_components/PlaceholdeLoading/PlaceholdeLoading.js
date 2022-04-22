@@ -1,4 +1,4 @@
-import { withRouter, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const PlaceholdeLoading = (props) => {
     return (
@@ -26,4 +26,4 @@ const PlaceholdeLoading = (props) => {
     )
 }
 
-export default withRouter(PlaceholdeLoading)
+export default PlaceholdeLoading

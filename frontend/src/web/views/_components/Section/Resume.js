@@ -1,4 +1,3 @@
-import { withRouter } from "react-router-dom"
 import React, { useState } from "react"
 import { useQuery } from "react-query"
 import * as API from "../../../common/api"
@@ -134,4 +133,4 @@ const Resume = (props) => {
     )
 }
 
-export default withRouter(Resume)
+export default Resume

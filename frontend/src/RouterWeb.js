@@ -1,6 +1,5 @@
 import React from "react"
-import { Switch, Redirect } from "react-router-dom"
-import { RouteWithLayout } from './web/components'
+import { Routes, Route } from "react-router-dom"
 import { MainLayout } from './web/layouts'
 import {
     HomeView,
@@ -10,26 +9,32 @@ import {
 
 const RouterWeb = () => {
     return (
-        <Switch>
-            <RouteWithLayout
-                exact
-                layout={MainLayout}
-                component={HomeView}
+        <Routes>
+            <Route
                 path='/'
+                element={
+                    <MainLayout>
+                        <HomeView />
+                    </MainLayout>
+                }
             />
-            <RouteWithLayout
-                exact
-                layout={MainLayout}
-                component={BlogView}
+            <Route
                 path='/blog'
+                element={
+                    <MainLayout>
+                        <BlogView />
+                    </MainLayout>
+                }
             />
-            <RouteWithLayout
-                exact
-                layout={MainLayout}
-                component={BlogDetailView}
+            <Route
                 path='/blog/:id'
+                element={
+                    <MainLayout>
+                        <BlogDetailView />
+                    </MainLayout>
+                }
             />
-        </Switch>
+        </Routes>
     )
 }
 

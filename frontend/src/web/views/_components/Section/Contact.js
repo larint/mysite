@@ -1,4 +1,3 @@
-import { withRouter } from "react-router-dom"
 import * as API from "../../../common/api"
 import { Form, Input, notification } from 'antd'
 import { useState } from "react"
@@ -63,11 +62,11 @@ const Contact = (props) => {
                     <div className="col-md-5 col-lg-4">
                         <div className="contacts__list">
                             <dl className="contact-list">
-                                <dt>Phone:</dt>
+                                <dt>Phone: </dt>
                                 <dd><a href={"tel:" + profile.contact?.phone}>{profile.contact?.phone}</a></dd>
-                                <dt>Skype:</dt>
+                                <dt>Skype: </dt>
                                 <dd><a href={"skype:" + profile.contact?.skype}>{profile.contact?.skype}</a></dd>
-                                <dt>Email:</dt>
+                                <dt>Email: </dt>
                                 <dd><a href={"mailto:" + profile.contact?.email}>{profile.contact?.email}</a></dd>
                             </dl>
                         </div>
@@ -109,18 +108,17 @@ const Contact = (props) => {
                                     <TextArea rows={4} maxLength="1000" />
                                 </Form.Item>
                                 <Form.Item
-                                    label={captcha.code}
                                     className="captcha"
                                     name="captcha"
                                     rules={[{ required: true, message: 'Captcha' }]}
                                 >
-                                    <Input type="text" placeholder="Enter captcha" />
+                                    <Input type="text" addonBefore={captcha.code} placeholder="Enter captcha" />
                                 </Form.Item>
                                 <button className="site-btn site-btn--form" type="submit" value="Send">Send</button>
                             </Form>
                         </div>
                         <div className="footer">
-                            <p>© 2021 Quang Dung</p>
+                            <p>© 2021 - Quang Dung</p>
                         </div>
                     </div>
                 </div>
@@ -129,4 +127,4 @@ const Contact = (props) => {
     )
 }
 
-export default withRouter(Contact)
+export default Contact

@@ -1,8 +1,7 @@
-import { withRouter, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { HashLink } from 'react-router-hash-link'
 
 const BlogMobileMenu = (props) => {
-    const { location } = props
 
     return (
         <div className="mobile-menu d-lg-none">
@@ -13,13 +12,13 @@ const BlogMobileMenu = (props) => {
                 <nav className="mobile-menu__wrapper">
                     <ul>
                         <li>
-                            <Link to={{ pathname: "/" }}>Home</Link>
+                            <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <HashLink smooth to={location.pathname + "#posts"}>other posts</HashLink>
+                            <HashLink smooth to="#posts">other posts</HashLink>
                         </li>
                         <li>
-                            <HashLink smooth to={location.pathname + "#contact"}>Contact</HashLink>
+                            <HashLink smooth to="#contact">Contact</HashLink>
                         </li>
                     </ul>
                 </nav>
@@ -28,4 +27,4 @@ const BlogMobileMenu = (props) => {
     )
 }
 
-export default withRouter(BlogMobileMenu)
+export default BlogMobileMenu

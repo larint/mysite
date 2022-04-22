@@ -5,8 +5,8 @@
 function validateForm(selector) {
     Array.from(document.querySelectorAll(selector)).forEach(item => {
         item.addEventListener('input', (e) => {
-            if(e.target.value === ''){
-            item.dataset.touched = false;
+            if (e.target.value === '') {
+                item.dataset.touched = false;
             }
         });
         item.addEventListener('invalid', () => {
@@ -23,9 +23,11 @@ validateForm('.js-form .form-field');
 var form = document.querySelector('.js-form');
 var formName = '.js-form';
 
-form.addEventListener('submit', function(e){
-    submitForm(e, formName);
-});
+if (form) {
+    form.addEventListener('submit', function (e) {
+        submitForm(e, formName);
+    });
+}
 
 function submitForm(e, formName) {
     e.preventDefault();

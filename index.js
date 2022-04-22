@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
 const express_1 = __importDefault(require("express"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
-const cookie_session_1 = __importDefault(require("cookie-session"));
+const express_session_1 = __importDefault(require("express-session"));
 const path_1 = __importDefault(require("path"));
 const method_override_1 = __importDefault(require("method-override"));
 const cors_1 = __importDefault(require("cors"));
@@ -14,14 +14,14 @@ require("./backend/utility/db");
 const socket_1 = require("./backend/services/socket");
 const admin_1 = require("./backend/routes/admin");
 const web_1 = require("./backend/routes/web");
-const app = express_1.default();
+const app = (0, express_1.default)();
 let http = require("http").Server(app);
 app.set("socketService", new socket_1.Socket(http));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
-app.use(cookie_parser_1.default());
-app.use(method_override_1.default('_method'));
-app.use(cookie_session_1.default({ secret: "bbjfhsbdfjhbdfjh", maxAge: 7 * 24 * 60 * 60 * 1000 }));
+app.use((0, cookie_parser_1.default)());
+app.use((0, method_override_1.default)('_method'));
+app.use((0, express_session_1.default)({ secret: "bjhbahsbdjabwdhjbwjdh", resave: true, saveUninitialized: true, cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } }));
 const corsOptions = {
     allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
     credentials: true,
@@ -30,7 +30,7 @@ const corsOptions = {
     preflightContinue: false,
 };
 app.disable("x-powered-by");
-app.use(cors_1.default(corsOptions));
+app.use((0, cors_1.default)(corsOptions));
 app.use(/\/(app.js|package.json)/, (req, res, next) => {
     res.sendStatus(404);
 });

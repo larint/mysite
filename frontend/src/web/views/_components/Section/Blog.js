@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { withRouter } from "react-router-dom"
 import { useQuery } from "react-query"
 import * as API from "../../../common/api"
 import {
@@ -47,4 +46,4 @@ const Blog = (props) => {
     )
 }
 
-export default withRouter(Blog)
+export default Blog

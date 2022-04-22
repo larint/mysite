@@ -1,19 +1,18 @@
-import { withRouter } from "react-router"
 import { Editor } from '@tinymce/tinymce-react'
 import { useEffect, useRef, useState } from "react"
 import { Breadcrumb, Button, message, Spin } from "antd"
 import * as API from "../../common/api"
 import { useMutation, useQuery } from "react-query"
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
 const BlogEdit = (props) => {
-    const { history } = props
+    let { id } = useParams()
+    const navigate = useNavigate()
     const editorRef = useRef(null)
     const [post, setPost] = useState({})
     const [loading, setLoading] = useState(true)
-    const { id } = props.match.params
-    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     const updatePost = (data) => {
         data.content = editorRef.current.getContent()
@@ -25,7 +24,7 @@ const BlogEdit = (props) => {
     const doUpdatePost = useMutation(API.updatePost, {
         onSuccess: (response) => {
             if (response.status == 200) {
-                history.push('/admin/blog')
+                navigate('/admin/blog')
             } else {
                 message.error('error')
             }
@@ -54,7 +53,7 @@ const BlogEdit = (props) => {
     return (
         <div>
             <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>Sys</Breadcrumb.Item>
+                <Breadcrumb.Item>Bài viết</Breadcrumb.Item>
                 <Breadcrumb.Item>Cập nhật:
                     <Link style={{ color: '#1890ff' }} target='_blank' to={'/blog/' + post?.id}> <strong>{post?.title}</strong></Link>
                     <span style={{ fontSize: '12px', fontStyle: 'italic', color: '#585858' }}> - {(new Date()).toLocaleString()}</span>
@@ -89,7 +88,7 @@ const BlogEdit = (props) => {
                             toolbar: 'undo redo | formatselect | ' +
                                 'bold italic backcolor | alignleft aligncenter ' +
                                 'alignright alignjustify | bullist numlist outdent indent | ' +
-                                'removeformat | help | code',
+                                'removeformat | help | code | media',
                             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
                         }}
                     />
@@ -102,4 +101,4 @@ const BlogEdit = (props) => {
     )
 }
 
-export default withRouter(BlogEdit)
+export default BlogEdit

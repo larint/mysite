@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { withRouter } from "react-router-dom"
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 
 const Main = (props) => {
@@ -21,4 +20,4 @@ const Main = (props) => {
     )
 }
 
-export default withRouter(Main)
+export default Main

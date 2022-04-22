@@ -74,9 +74,9 @@ class WebController {
 
     getCaptcha = async (req: Request, res: Response) => {
         let code = makeid()
-        req.session.captcha = code
+        req.session.captcha = code.toUpperCase()
         return res.status(200).json({
-            code: code
+            code: code.toUpperCase()
         })
     }
 }

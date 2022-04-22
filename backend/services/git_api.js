@@ -10,7 +10,7 @@ class GitAPI {
     constructor() {
         this.getFile = async (path) => {
             try {
-                let response = await node_fetch_1.default(`https://api.github.com/repos/${git_config_1.GIT.owner}/${git_config_1.GIT.repo}/contents/${path}`, {
+                let response = await (0, node_fetch_1.default)(`https://api.github.com/repos/${git_config_1.GIT.owner}/${git_config_1.GIT.repo}/contents/${path}`, {
                     method: 'get',
                     headers: {
                         'Content-Type': 'text/plain',
@@ -26,7 +26,7 @@ class GitAPI {
         };
         this.createFile = async (path, data) => {
             try {
-                let response = await node_fetch_1.default(`https://api.github.com/repos/${git_config_1.GIT.owner}/${git_config_1.GIT.repo}/contents/${path}`, {
+                let response = await (0, node_fetch_1.default)(`https://api.github.com/repos/${git_config_1.GIT.owner}/${git_config_1.GIT.repo}/contents/${path}`, {
                     method: 'put',
                     headers: {
                         'Content-Type': 'text/plain',
@@ -43,7 +43,7 @@ class GitAPI {
         };
         this.updateFile = async (path, data) => {
             try {
-                let response = await node_fetch_1.default(`https://api.github.com/repos/${git_config_1.GIT.owner}/${git_config_1.GIT.repo}/contents/${path}`, {
+                let response = await (0, node_fetch_1.default)(`https://api.github.com/repos/${git_config_1.GIT.owner}/${git_config_1.GIT.repo}/contents/${path}`, {
                     method: 'put',
                     headers: {
                         'Content-Type': 'text/plain',
@@ -60,7 +60,7 @@ class GitAPI {
         };
         this.deleteFile = async (path, data) => {
             try {
-                let response = await node_fetch_1.default(`https://api.github.com/repos/${git_config_1.GIT.owner}/${git_config_1.GIT.repo}/contents/${path}`, {
+                let response = await (0, node_fetch_1.default)(`https://api.github.com/repos/${git_config_1.GIT.owner}/${git_config_1.GIT.repo}/contents/${path}`, {
                     method: 'delete',
                     headers: {
                         'Content-Type': 'text/plain',

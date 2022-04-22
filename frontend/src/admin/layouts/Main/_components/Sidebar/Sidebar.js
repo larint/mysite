@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { withRouter } from "react-router"
+import React, { useEffect, useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 import { Layout, Menu } from 'antd'
 import {
     DesktopOutlined,
@@ -13,27 +13,63 @@ const { Sider } = Layout
 const { SubMenu } = Menu
 
 const Sidebar = (props) => {
-    const { history } = props
+    const navigate = useNavigate()
+    const { pathname } = useLocation()
     const [isCollapsed, setIsCollapsed] = useState(false)
+    const [defaultSelectedKeys, setDefaultSelectedKeys] = useState([])
+    const [defaultOpenKeys, setDefaultOpenKeys] = useState([])
 
     const onCollapse = (collapsed) => {
         setIsCollapsed(collapsed)
     }
 
+    useEffect(() => {
+        if (pathname == '/admin') {
+            setDefaultOpenKeys(['1'])
+        }
+        if (pathname.includes('/admin/blog')) {
+            setDefaultOpenKeys(['2'])
+            if (pathname == '/admin/blog') {
+                setDefaultSelectedKeys(['21'])
+            }
+            if (pathname == '/admin/blog/create') {
+                setDefaultSelectedKeys(['22'])
+            }
+        }
+        if (pathname == '/admin/info') {
+            setDefaultOpenKeys(['5'])
+        }
+    }, [])
+
     const handleClick = (event) => {
+        let OpenKeys = ['1']
+        let SelectedKeys = []
         switch (event.key) {
             case "1":
-                history.push('/admin')
+                navigate('/admin')
+                OpenKeys = ['1']
+                SelectedKeys = ['']
                 break
             case "21":
-                history.push('/admin/blog')
+                navigate('/admin/blog')
+                OpenKeys = ['2']
+                SelectedKeys = ['21']
                 break
             case "22":
-                history.push('/admin/blog/create')
+                navigate('/admin/blog/create')
+                OpenKeys = ['2']
+                SelectedKeys = ['22']
+                break
+            case "5":
+                navigate('/admin/info')
+                OpenKeys = ['5']
+                SelectedKeys = []
                 break
             default:
                 break
         }
+        setDefaultOpenKeys(OpenKeys)
+        setDefaultSelectedKeys(SelectedKeys)
     }
 
     return (
@@ -41,29 +77,29 @@ const Sidebar = (props) => {
             <div className="logo">
                 <img src="logo.png" alt="" />
             </div>
-            <Menu onClick={handleClick} theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                <Menu.Item key="1" icon={<PieChartOutlined />}>
-                    Thống Kê
-                </Menu.Item>
-                <SubMenu key="2" icon={<DesktopOutlined />} title="Bài Viết">
-                    <Menu.Item key="21">Danh sách</Menu.Item>
-                    <Menu.Item key="22">Tạo mới</Menu.Item>
-                </SubMenu>
-                <SubMenu key="3" icon={<UserOutlined />} title="User">
-                    <Menu.Item key="31">Tom</Menu.Item>
-                    <Menu.Item key="32">Bill</Menu.Item>
-                    <Menu.Item key="33">Alex</Menu.Item>
-                </SubMenu>
-                <SubMenu key="4" icon={<TeamOutlined />} title="Team">
-                    <Menu.Item key="6">Team 1</Menu.Item>
-                    <Menu.Item key="8">Team 2</Menu.Item>
-                </SubMenu>
-                <Menu.Item key="9" icon={<FileOutlined />}>
-                    Files
-                </Menu.Item>
-            </Menu>
+            {defaultOpenKeys.length > 0 && (
+                <Menu
+                    onClick={handleClick}
+                    theme="dark"
+                    defaultOpenKeys={defaultOpenKeys}
+                    defaultSelectedKeys={defaultSelectedKeys}
+                    mode="inline"
+                >
+                    <Menu.Item key="1" icon={<PieChartOutlined />}>
+                        Thống Kê
+                    </Menu.Item>
+                    <SubMenu key="2" icon={<DesktopOutlined />} title="Bài Viết">
+                        <Menu.Item key="21">Danh sách</Menu.Item>
+                        <Menu.Item key="22">Tạo mới</Menu.Item>
+                    </SubMenu>
+                    <Menu.Item key="5" icon={<FileOutlined />}>
+                        Thông tin
+                    </Menu.Item>
+                </Menu>
+
+            )}
         </Sider>
     )
 }
 
-export default withRouter(Sidebar)
+export default Sidebar

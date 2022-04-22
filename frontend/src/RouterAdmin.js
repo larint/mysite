@@ -1,42 +1,67 @@
 import React from "react"
-import { Switch, Redirect } from "react-router-dom"
-import RouteWithLayout from './admin/components/RouteWithLayout'
-import { MainLayout } from './admin/layouts'
+import { Routes, Route } from "react-router-dom"
+import { MainLayout, AuthLayout } from './admin/layouts'
 import {
     DashboardView,
     BlogListView,
     BlogCreateView,
-    BlogEditView
+    BlogEditView,
+    ProfileView,
+    LoginView
 } from './admin/views'
 
 const RouterAdmin = () => {
     return (
-        <Switch>
-            <RouteWithLayout
-                exact
-                layout={MainLayout}
-                component={DashboardView}
+        <Routes>
+            <Route
+                path='/admin/login'
+                element={
+                    <AuthLayout>
+                        <LoginView />
+                    </AuthLayout>
+                }
+            />
+            <Route
                 path='/admin'
+                element={
+                    <MainLayout>
+                        <DashboardView />
+                    </MainLayout>
+                }
             />
-            <RouteWithLayout
-                exact
-                layout={MainLayout}
-                component={BlogListView}
+            <Route
                 path='/admin/blog'
+                element={
+                    <MainLayout>
+                        <BlogListView />
+                    </MainLayout>
+                }
             />
-            <RouteWithLayout
-                exact
-                layout={MainLayout}
-                component={BlogCreateView}
+            <Route
                 path='/admin/blog/create'
+                element={
+                    <MainLayout>
+                        <BlogCreateView />
+                    </MainLayout>
+                }
             />
-            <RouteWithLayout
-                exact
-                layout={MainLayout}
-                component={BlogEditView}
+            <Route
                 path='/admin/blog/edit/:id'
+                element={
+                    <MainLayout>
+                        <BlogEditView />
+                    </MainLayout>
+                }
             />
-        </Switch>
+            <Route
+                path='/admin/info'
+                element={
+                    <MainLayout>
+                        <ProfileView />
+                    </MainLayout>
+                }
+            />
+        </Routes>
     )
 }
 

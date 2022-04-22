@@ -1,4 +1,3 @@
-import { withRouter } from "react-router-dom"
 
 const Hello = (props) => {
     const { profile } = props
@@ -16,4 +15,4 @@ const Hello = (props) => {
     )
 }
 
-export default withRouter(Hello)
+export default Hello

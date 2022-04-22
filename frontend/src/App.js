@@ -1,5 +1,5 @@
 import { Component } from "react"
-import { Router } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 import RouterAdmin from './RouterAdmin'
 import RouterWeb from './RouterWeb'
 import { createBrowserHistory } from 'history'
@@ -9,10 +9,10 @@ const browserHistory = createBrowserHistory()
 class App extends Component {
   render() {
     return (
-      <Router history={browserHistory}>
+      <BrowserRouter history={browserHistory} location={browserHistory.location}>
         <RouterAdmin />
         <RouterWeb />
-      </Router>
+      </BrowserRouter>
     )
   }
 }

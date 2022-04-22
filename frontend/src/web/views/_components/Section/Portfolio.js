@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { withRouter } from "react-router-dom"
 import { useQuery } from "react-query"
 import * as API from "../../../common/api"
 
@@ -60,4 +59,4 @@ const Portfolio = (props) => {
     )
 }
 
-export default withRouter(Portfolio)
+export default Portfolio

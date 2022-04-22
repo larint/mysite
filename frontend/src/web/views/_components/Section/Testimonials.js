@@ -1,4 +1,3 @@
-import { withRouter } from "react-router-dom"
 
 const Testimonials = (props) => {
     return (
@@ -88,4 +87,4 @@ const Testimonials = (props) => {
     )
 }
 
-export default withRouter(Testimonials)
+export default Testimonials

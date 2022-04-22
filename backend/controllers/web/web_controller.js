@@ -54,10 +54,10 @@ class WebController {
             });
         };
         this.getCaptcha = async (req, res) => {
-            let code = helper_1.makeid();
-            req.session.captcha = code;
+            let code = (0, helper_1.makeid)();
+            req.session.captcha = code.toUpperCase();
             return res.status(200).json({
-                code: code
+                code: code.toUpperCase()
             });
         };
     }

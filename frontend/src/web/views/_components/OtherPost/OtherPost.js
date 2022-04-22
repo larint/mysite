@@ -1,4 +1,4 @@
-import { Link, withRouter } from "react-router-dom"
+import { Link } from "react-router-dom"
 import React, { useState } from "react"
 import { useQuery } from "react-query"
 import * as API from "../../../common/api"
@@ -42,4 +42,4 @@ const OtherPost = (props) => {
     )
 }
 
-export default withRouter(OtherPost)
+export default OtherPost

@@ -3,7 +3,7 @@ require('dotenv').config()
 import express from 'express'
 import { Request, Response, NextFunction, ErrorRequestHandler } from 'express'
 import cookieParser from 'cookie-parser'
-import session from 'cookie-session'
+import session from "express-session"
 import path from 'path'
 import methodOverride from 'method-override'
 import cors from 'cors'
@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(methodOverride('_method'))
 // session expire time after 7 days (milliseconds)
-app.use(session({ secret: "bbjfhsbdfjhbdfjh", maxAge: 7 * 24 * 60 * 60 * 1000 }))
+app.use(session({ secret: "bjhbahsbdjabwdhjbwjdh", resave: true, saveUninitialized: true, cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } }))
 
 // pass user to all template
 // app.use(middlewareGlobal)

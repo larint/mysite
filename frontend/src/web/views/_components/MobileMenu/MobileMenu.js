@@ -1,4 +1,3 @@
-import { withRouter } from "react-router-dom"
 import { HashLink } from 'react-router-hash-link'
 
 const MobileMenu = (props) => {
@@ -29,4 +28,4 @@ const MobileMenu = (props) => {
     )
 }
 
-export default withRouter(MobileMenu)
+export default MobileMenu

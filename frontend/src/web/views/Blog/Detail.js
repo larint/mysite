@@ -1,4 +1,4 @@
-import { Link, withRouter } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import { useQuery } from "react-query"
 import * as API from "../../common/api"
@@ -13,7 +13,7 @@ import {
 const Detail = (props) => {
     const [profile, setProfile] = useState({})
     const [post, setPost] = useState(null)
-    const { id } = props.match.params
+    let { id } = useParams()
 
     useQuery(
         [API.QUERY_KEY_GET_PROFILE], () => API.getProfile(),
@@ -81,4 +81,4 @@ const Detail = (props) => {
     )
 }
 
-export default withRouter(Detail)
+export default Detail

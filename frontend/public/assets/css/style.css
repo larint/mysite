@@ -13097,7 +13097,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .post-cards .post-cards__card {
-    transition: all .3s
+    transition: all .3s;
+    margin-bottom: 20px;
+    background: #f7f7f7;
 }
 
 .post-cards .post-cards__card:hover {
@@ -13537,7 +13539,8 @@ input[type=number]::-webkit-outer-spin-button {
     text-transform: uppercase;
     font-weight: 700;
     margin-top: 30px;
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    font-size: 30px;
 }
 
 .article .article_date {
