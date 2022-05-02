@@ -1,0 +1,1 @@
+if("undefined"!==typeof require){var f=require("fs");f.default&&(f=f.default),exports.default=f,module.exports=exports.default}

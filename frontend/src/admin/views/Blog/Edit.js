@@ -5,6 +5,7 @@ import * as API from "../../common/api"
 import { useMutation, useQuery } from "react-query"
 import { useForm } from "react-hook-form"
 import { Link, useNavigate, useParams } from "react-router-dom"
+import moment from 'moment'
 
 const BlogEdit = (props) => {
     let { id } = useParams()
@@ -56,7 +57,7 @@ const BlogEdit = (props) => {
                 <Breadcrumb.Item>Bài viết</Breadcrumb.Item>
                 <Breadcrumb.Item>Cập nhật:
                     <Link style={{ color: '#1890ff' }} target='_blank' to={'/blog/' + post?.id}> <strong>{post?.title}</strong></Link>
-                    <span style={{ fontSize: '12px', fontStyle: 'italic', color: '#585858' }}> - {(new Date()).toLocaleString()}</span>
+                    <span style={{ fontSize: '12px', fontStyle: 'italic', color: '#585858' }}> - {moment(post.createAt).format('DD/MM/YYYY hh:mm:ss')}</span>
                 </Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360, position: 'relative' }}>

@@ -1,0 +1,22 @@
+{
+    "text1": "Quản trị web",
+    "text2": "Thống kê",
+    "logout": "Đăng xuất",
+    "login_page": {
+        "username" : "Tên đăng nhập",
+        "password" : "Mật khẩu",
+        "remember" : "Ghi nhớ",
+        "login" : "Đăng nhập"
+    },
+    "menu_admin": {
+        "menu1" : "Thống kê",
+        "menu2" : "Bài viết",
+        "menu3" : "Danh sách",
+        "menu4" : "Tạo mới",
+        "menu5" : "Thông tin"
+    },
+    "stats_page": {
+        "text1": "thống kê bài viết theo tháng"
+    }
+}
+  

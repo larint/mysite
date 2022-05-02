@@ -14,6 +14,7 @@ require("./backend/utility/db");
 const socket_1 = require("./backend/services/socket");
 const admin_1 = require("./backend/routes/admin");
 const web_1 = require("./backend/routes/web");
+const celebrate_1 = require("celebrate");
 const app = (0, express_1.default)();
 let http = require("http").Server(app);
 app.set("socketService", new socket_1.Socket(http));
@@ -50,6 +51,7 @@ app.get('/*', (req, res) => {
         }
     });
 });
+app.use((0, celebrate_1.errors)());
 app.use((err, req, res, next) => {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
     return res.json({ error: 'error' });

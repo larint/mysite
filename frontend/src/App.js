@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom"
 import RouterAdmin from './RouterAdmin'
 import RouterWeb from './RouterWeb'
 import { createBrowserHistory } from 'history'
+import './i18n'
 import "./App.css"
 const browserHistory = createBrowserHistory()
 

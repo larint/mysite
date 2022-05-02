@@ -3,9 +3,11 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { useMutation } from "react-query"
 import * as API from "../../common/api"
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const Login = () => {
     const navigate = useNavigate()
+    const { t, i18n } = useTranslation()
 
     const doLogin = useMutation(API.doLogin, {
         onSuccess: (response) => {

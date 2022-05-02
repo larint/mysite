@@ -1,0 +1,22 @@
+{
+    "text1": "System management",
+    "text2": "Statistic",
+    "logout": "Logout",
+    "login_page": {
+        "username" : "Username",
+        "password" : "Password",
+        "remember" : "Remember",
+        "login" : "Login"
+    },
+    "menu_admin": {
+        "menu1" : "Statistic",
+        "menu2" : "Blog",
+        "menu3" : "List",
+        "menu4" : "Create",
+        "menu5" : "Profile"
+    },
+    "stats_page": {
+        "text1": "statistics of articles by month"
+    }
+}
+  

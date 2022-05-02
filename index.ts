@@ -15,6 +15,7 @@ import { Socket } from './backend/services/socket'
 // ROUTER
 import { apiAdminRoute } from './backend/routes/admin'
 import { apiWebRoute } from './backend/routes/web'
+import { errors } from 'celebrate'
 
 declare module 'express-session' {
 	export interface SessionData {
@@ -75,6 +76,8 @@ app.get('/*', (req, res) => {
 		}
 	});
 });
+
+app.use(errors());
 
 // error handler
 app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) => {

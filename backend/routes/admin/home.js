@@ -5,10 +5,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const home_controller_1 = __importDefault(require("../../controllers/admin/home_controller"));
+const celebrate_1 = require("celebrate");
 let router = (0, express_1.Router)();
 router.get('/', home_controller_1.default.index);
 router.get('/log', home_controller_1.default.log);
-router.post('/blog/save', home_controller_1.default.savePost);
+router.post('/blog/save', (0, celebrate_1.celebrate)({
+    [celebrate_1.Segments.BODY]: {
+        title: celebrate_1.Joi.string().required(),
+        content: celebrate_1.Joi.string().required()
+    }
+}), home_controller_1.default.savePost);
 router.post('/blog/list', home_controller_1.default.getListPost);
 router.post('/blog/get-post', home_controller_1.default.getPost);
 router.put('/blog/save', home_controller_1.default.updatePost);

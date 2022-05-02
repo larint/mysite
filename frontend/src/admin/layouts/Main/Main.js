@@ -2,16 +2,14 @@ import React, { useState } from "react"
 import { Sidebar } from './_components'
 import { ConfigProvider, Layout, message, Row, Col, Radio, Button, Tooltip } from 'antd'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
-import enUS from 'antd/lib/locale/en_US'
-import viVN from 'antd/lib/locale/vi_VN'
 import * as API from "../../common/api"
 import { useMutation, useQuery } from "react-query"
 import { useNavigate } from "react-router-dom"
 
 import {
-    GlobalOutlined,
     LogoutOutlined
 } from '@ant-design/icons'
+import { useTranslation } from "react-i18next"
 
 
 const { Header, Content, Footer } = Layout
@@ -19,8 +17,9 @@ const { Header, Content, Footer } = Layout
 const Main = (props) => {
     const navigate = useNavigate()
     const { children } = props
-    const [locale, setLocale] = useState(viVN)
     const [auth, setAuth] = useState(false)
+    const { t, i18n } = useTranslation()
+
     const childrenWithProps = React.Children.map(children, (element) =>
         React.cloneElement(element, {
             auth: auth,
@@ -60,7 +59,7 @@ const Main = (props) => {
 
     const onChangeLocale = e => {
         const locale = e.target.value
-        setLocale(locale)
+        i18n.changeLanguage(locale);
     }
 
     const logout = () => {
@@ -68,7 +67,7 @@ const Main = (props) => {
     }
 
     return (
-        <ConfigProvider locale={locale}>
+        <ConfigProvider>
             {auth && (
                 <Layout style={{ minHeight: '100vh' }}>
                     <HelmetProvider>
@@ -90,12 +89,11 @@ const Main = (props) => {
                                     <h2 className="header-title">Quản trị web</h2>
                                 </Col>
                                 <Col span={12} style={{ textAlign: 'right', padding: '0 20px' }}>
-                                    <a><GlobalOutlined style={{ fontSize: 20 }} /></a>
-                                    <Radio.Group value={locale} onChange={onChangeLocale}>
-                                        <Radio.Button key="en" value={enUS}>
+                                    <Radio.Group onChange={onChangeLocale}>
+                                        <Radio.Button key="en" value="en">
                                             EN
                                         </Radio.Button>
-                                        <Radio.Button key="vi" value={viVN}>
+                                        <Radio.Button key="vi" value="vi">
                                             VN
                                         </Radio.Button>
                                     </Radio.Group>

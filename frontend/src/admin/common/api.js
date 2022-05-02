@@ -1,8 +1,8 @@
 import axios from "axios"
 
 /* BASE URL */
-// export const AD_SITE_URL = "https://recv.vercel.app" //SERVER
-export const AD_SITE_URL = "http://localhost:3001" //LOCAL
+export const AD_SITE_URL = "https://recv.vercel.app" //SERVER
+// export const AD_SITE_URL = "http://localhost:3001" //LOCAL
 
 export const AD_BASE_URL = AD_SITE_URL + "/api/ad"
 

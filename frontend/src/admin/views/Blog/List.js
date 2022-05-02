@@ -4,6 +4,7 @@ import * as API from "../../common/api"
 import { Table, Modal, Space, Breadcrumb, message } from 'antd'
 import { Link } from "react-router-dom"
 import { ExclamationCircleOutlined } from '@ant-design/icons';
+import moment from "moment"
 
 const Blog = (props) => {
     const [listPost, setListPost] = useState([])
@@ -45,11 +46,16 @@ const Blog = (props) => {
                     data.push({
                         key: key,
                         name: it.title,
-                        date: new Date(it.createAt).toLocaleString(),
+                        date: moment(it.createAt).format('DD/MM/YYYY hh:mm:ss'),
                         id: it.id,
                         sha: it.sha
                     })
                 }
+                data.sort((a, b) => {
+                    if (a > b) { return -1 }
+                    else if (a < b) { return 1 }
+                    return 0
+                })
                 setListPost(data)
                 setLoadingData(false)
             },
