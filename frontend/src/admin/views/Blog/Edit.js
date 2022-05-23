@@ -80,17 +80,18 @@ const BlogEdit = (props) => {
                         name="content"
                         init={{
                             height: 800,
-                            menubar: false,
+                            menubar: true,
                             plugins: [
                                 'advlist autolink lists link image charmap print preview anchor',
                                 'searchreplace visualblocks code fullscreen',
-                                'insertdatetime media table paste code help wordcount'
+                                'insertdatetime media table paste code help wordcount codesample'
                             ],
                             toolbar: 'undo redo | formatselect | ' +
                                 'bold italic backcolor | alignleft aligncenter ' +
                                 'alignright alignjustify | bullist numlist outdent indent | ' +
-                                'removeformat | help | code | media',
-                            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                                'removeformat | help | code | media image | preview | codesample',
+                            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                            paste_data_images: true
                         }}
                     />
                     <div className="text-right mt-3">

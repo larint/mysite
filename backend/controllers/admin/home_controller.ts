@@ -27,9 +27,7 @@ class HomeController {
             })
         }
 
-        return res.status(201).json({
-            message: 'create post failed'
-        })
+        return res.sendStatus(201)
     }
 
     updatePost = async (req: Request, res: Response) => {
@@ -40,9 +38,7 @@ class HomeController {
             })
         }
 
-        return res.status(201).json({
-            message: 'update post failed'
-        })
+        return res.sendStatus(201)
     }
 
     deletePost = async (req: Request, res: Response) => {
@@ -53,9 +49,7 @@ class HomeController {
             })
         }
 
-        return res.status(201).json({
-            message: 'delete post failed'
-        })
+        return res.sendStatus(201)
     }
 
     getListPost = async (req: Request, res: Response) => {
@@ -154,10 +148,7 @@ class HomeController {
             })
         }
 
-        return res.status(201).json({
-            message: 'login failed',
-            user: null
-        })
+        return res.sendStatus(201)
     }
 
     doLogin = async (req: Request, res: Response) => {
@@ -172,9 +163,7 @@ class HomeController {
             })
         }
 
-        return res.status(201).json({
-            message: 'login failed'
-        })
+        return res.sendStatus(201)
     }
 
     doLogout = async (req: Request, res: Response) => {
@@ -185,9 +174,7 @@ class HomeController {
             })
         }
 
-        return res.status(201).json({
-            message: 'logout failed'
-        })
+        return res.sendStatus(201)
     }
 }
 
